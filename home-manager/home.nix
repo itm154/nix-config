@@ -42,7 +42,7 @@
   };
 
   # Add stuff for your user as you see fit:
-  # home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [ wezterm kitty ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
