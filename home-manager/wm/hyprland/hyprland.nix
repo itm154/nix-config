@@ -110,7 +110,7 @@
       decoration = {
         rounding = 8;
         inactive_opacity = 0.8;
-        drop_shadow = "yes";
+        drop_shadow = true;
         shadow_range = 8;
         shadow_render_power = 2;
         "col.shadow" = "rgba(1a1a1aee)";
@@ -124,7 +124,7 @@
 
       # More eyecandy
       animations = {
-        enabled = "yes";
+        enabled = true;
         bezier = "betterease, 0.05, 0.9, 0.1, 1";
         animation = [
           "windows, 1, 5, betterease"
