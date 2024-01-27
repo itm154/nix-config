@@ -8,6 +8,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+
+    # Window manager configuration
+    ./wm
   ];
 
   nixpkgs = {
@@ -39,14 +42,13 @@
   };
 
   # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
-  wayland.windowManager.hyprland.enable = true;
+  programs.git.enable = true;
+  programs.neovim.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
