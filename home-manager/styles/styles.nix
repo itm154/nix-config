@@ -1,4 +1,9 @@
 { config, pkgs, ... }: {
+  # Prefer dark mode
+  dconf.settings = {
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+  };
+
   # GTK
   gtk.enable = true;
   gtk.theme.package = pkgs.adw-gtk3;
