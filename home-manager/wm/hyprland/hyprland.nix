@@ -61,10 +61,6 @@
         "$ctrlmod, K, workspace, e+1"
         "$ctrlmod, J, workspace, e-1"
 
-        # Window resizing
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-
         # Notification Center
         "$mainMod, N, exec, swaync-client -t"
 
@@ -156,10 +152,7 @@
         animate_manual_resizes = false;
         animate_mouse_windowdragging = false;
         vfr = true;
-      };
-
-      # Hyprland environment variables
-      env = [ "QT_QPA_PLATFORM,wayland" "SDL_VIDEODRIVER,wayland" ] ++ (
+      } ++ (
         # Workspaces
         # binds $mainMod + [shift +] {1..6} to [move to] workspace {1..10}
         builtins.concatLists (builtins.genList (x:
