@@ -124,7 +124,7 @@
     # swaylock = {};
   };
 
-# Gnome polkit
+  # Gnome polkit
   security.polkit.enable = true;
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -133,12 +133,13 @@
       wants = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
       serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
+        Type = "simple";
+        ExecStart =
+          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
     };
   };
 
@@ -157,7 +158,7 @@
     NIXOS_OZONE_WL = "1";
   };
 
-# Basic system packages
+  # Basic system packages
   environment.systemPackages = with pkgs; [
     firefox
     vim
