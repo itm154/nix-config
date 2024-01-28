@@ -69,7 +69,15 @@
 
         # Global shortcut
         "ALT, Alt_R, pass,^discord$"
-      ];
+      ] ++ (
+        # Workspaces
+        # binds $mainMod + [shift +] {1..6} to [move to] workspace {1..10}
+        builtins.concatLists (builtins.genList (x:
+          let ws = let c = (x + 1) / 6; in builtins.toString (x + 1 - (c * 6));
+          in [
+            "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+            "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+          ]) 6));
 
       # Mousebindings
       bindm = [
@@ -152,15 +160,7 @@
         animate_manual_resizes = false;
         animate_mouse_windowdragging = false;
         vfr = true;
-      } ++ (
-        # Workspaces
-        # binds $mainMod + [shift +] {1..6} to [move to] workspace {1..10}
-        builtins.concatLists (builtins.genList (x:
-          let ws = let c = (x + 1) / 6; in builtins.toString (x + 1 - (c * 6));
-          in [
-            "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
-            "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-          ]) 6));
+      };
     };
   };
 }
