@@ -1,6 +1,15 @@
-{ config, pkgs, ... }: {
-  
-  home.packages = with pkgs; [ 
+{ config, pkgs, ... }:
+let
+  startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    ${pkgs.waybar}/bin/waybar &
+    ${pkgs.swww}/bin/swww &
+
+    sleep 1
+
+    ${pkgs.swww}/bin/swww ~/Pictures/Wallpapers/3.jpg &
+  '';
+in {
+  home.packages = with pkgs; [
     swww
     brightnessctl
     grimblast
@@ -10,6 +19,8 @@
 
     swaynotificationcenter
     rofi-wayland
+
+    waybar
   ];
 
   wayland.windowManager.hyprland = {
@@ -20,6 +31,11 @@
       "$ctrlMod" = "SUPERCTRL";
 
       monitor = "eDP-1, 1920x1080@60, 0x0, 1";
+
+      exec-once = "${startupScript}/bin/start";
+
+      # Environment variables for hyprland
+      env = [ "QT_QPA_PLATFORM,wayland" "SDL_VIDEODRIVER,wayland" ];
 
       # Keybindings
       bind = [
