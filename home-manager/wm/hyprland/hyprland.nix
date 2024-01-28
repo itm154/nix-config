@@ -44,8 +44,8 @@ in {
         "$mainMod, B, exec, firefox"
 
         # Scripts
-        "$shiftmod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-        "$shiftmod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+        "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+        "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
         # $mainMod, D, exec, $HOME/.config/rofi/launchers/type-2/launcher.sh
         # $mainMod, X, exec, $HOME/.config/rofi/powermenu/type-2/powermenu.sh
 
@@ -79,24 +79,24 @@ in {
         "$mainMod, down, movefocus, d"
 
         # Move windows in workspace
-        "$shiftmod, H, movewindow, l"
-        "$shiftmod, L, movewindow, r"
-        "$shiftmod, K, movewindow, u"
-        "$shiftmod, J, movewindow, d"
-        "$shiftmod, left, movewindow, l"
-        "$shiftmod, right, movewindow, r"
-        "$shiftmod, up, movewindow, u"
-        "$shiftmod, down, movewindow, d"
+        "$shiftMod, H, movewindow, l"
+        "$shiftMod, L, movewindow, r"
+        "$shiftMod, K, movewindow, u"
+        "$shiftMod, J, movewindow, d"
+        "$shiftMod, left, movewindow, l"
+        "$shiftMod, right, movewindow, r"
+        "$shiftMod, up, movewindow, u"
+        "$shiftMod, down, movewindow, d"
 
         # Change workspaces
-        "$ctrlmod, K, workspace, e+1"
-        "$ctrlmod, J, workspace, e-1"
+        "$ctrlMod, K, workspace, e+1"
+        "$ctrlMod, J, workspace, e-1"
 
         # Notification Center
         "$mainMod, N, exec, swaync-client -t"
 
         # Restart Waybar
-        "$shiftmod, W, exec, /home/itm154/.config/hypr/waybar.sh"
+        "$shiftMod, W, exec, /home/itm154/.config/hypr/waybar.sh"
 
         # Global shortcut
         "ALT, Alt_R, pass,^discord$"
