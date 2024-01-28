@@ -1,4 +1,17 @@
 { config, pkgs, ... }: {
+  
+  home.packages = with pkgs; [ 
+    swww
+    brightnessctl
+    grimblast
+
+    playerctl
+    pamixer
+
+    swaynotificationcenter
+    rofi-wayland
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -6,10 +19,12 @@
       "$shiftMod" = "SUPERSHIFT";
       "$ctrlMod" = "SUPERCTRL";
 
+      monitor = "eDP-1, 1920x1080@60, 0x0, 1";
+
       # Keybindings
       bind = [
         # Applications
-        "$mainMod, Return, exec, wezterm"
+        "$mainMod, Return, exec, kitty"
         "$mainMod, B, exec, firefox"
 
         # Scripts

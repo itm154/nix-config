@@ -42,7 +42,11 @@
   };
 
   # Add stuff for your user as you see fit:
-  home.packages = with pkgs; [ wezterm kitty ];
+  home.packages = with pkgs; [ 
+    # Wezterm currently is broken
+    # wezterm
+    kitty
+  ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
