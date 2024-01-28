@@ -11,6 +11,7 @@
 
     # Window manager configuration
     ./wm
+    ./styles
   ];
 
   nixpkgs = {
@@ -47,7 +48,7 @@
       # Wezterm currently is broken
       # wezterm
       kitty
-      nautilus
+      gnome.nautilus
     ];
 
   # Enable home-manager and git
