@@ -47,6 +47,7 @@
       # Wezterm currently is broken
       # wezterm
       kitty
+      nautilus
     ];
 
   # Enable home-manager and git

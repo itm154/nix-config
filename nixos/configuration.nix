@@ -124,6 +124,24 @@
     # swaylock = {};
   };
 
+# Gnome polkit
+  security.polkit.enable = true;
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+          Type = "simple";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
+    };
+  };
+
   # Audio
   security.rtkit.enable = true;
   services.pipewire = {
@@ -139,11 +157,22 @@
     NIXOS_OZONE_WL = "1";
   };
 
+# Basic system packages
+  environment.systemPackages = with pkgs; [
+    firefox
+    vim
+
+    brightnessctl
+
+    pamixer
+    playerctl
+
+    libnotify
+  ];
+
   # Window manager
   programs.hyprland.enable = true;
 
-  # Basic system packages
-  environment.systemPackages = with pkgs; [ vim firefox ];
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
 }

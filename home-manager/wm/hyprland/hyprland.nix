@@ -2,25 +2,19 @@
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
-    ${pkgs.swww}/bin/swww &
+    ${pkgs.swww}/bin/swww init &
 
     sleep 1
 
-    ${pkgs.swww}/bin/swww ~/Pictures/Wallpapers/3.jpg &
+    ${pkgs.swww}/bin/swww img ~/Pictures/Wallpapers/3.jpg &
   '';
 in {
   home.packages = with pkgs; [
     swww
-    brightnessctl
-    grimblast
-
-    playerctl
-    pamixer
-
-    swaynotificationcenter
-    rofi-wayland
-
     waybar
+    rofi-wayland
+    grimblast
+    swaynotificationcenter
   ];
 
   wayland.windowManager.hyprland = {
