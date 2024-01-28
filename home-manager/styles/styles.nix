@@ -11,8 +11,14 @@
     name = "Bibata-Modern-Classic";
     size = 16;
   };
+
   # GTK
   gtk.enable = true;
+  gtk.font = {
+    package = pkgs.cantarell-fonts;
+    name = "Cantarell";
+    size = 11;
+  };
   gtk.theme.package = pkgs.adw-gtk3;
   gtk.theme.name = "adw-gtk3-dark";
   gtk.iconTheme.package = pkgs.catppuccin-papirus-folders.override {
