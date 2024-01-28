@@ -4,6 +4,13 @@
     "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
   };
 
+  # Cursor settings
+  home.pointerCursor = {
+    gtk.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 16;
+  };
   # GTK
   gtk.enable = true;
   gtk.theme.package = pkgs.adw-gtk3;
