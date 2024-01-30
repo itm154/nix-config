@@ -12,6 +12,7 @@
     # Window manager configuration
     ./wm
     ./styles
+    ./interface
   ];
 
   nixpkgs = {
