@@ -165,6 +165,7 @@
 
     brightnessctl
 
+    alsa-utils
     pamixer
     playerctl
     killall
