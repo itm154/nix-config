@@ -167,12 +167,15 @@
 
     pamixer
     playerctl
+    killall
 
     libnotify
+    cava
   ];
 
   # Window manager
   programs.hyprland.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
