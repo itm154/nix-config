@@ -1,6 +1,6 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 let
-# This script is used for waybar's cava module
+  # This script is used for waybar's cava module
   waybar-cava = pkgs.writeShellScriptBin "waybar_cava" ''
     is_cava_ServerExist=`ps -ef|grep -m 1 ${pkgs.cava}/bin/cava | grep -v "grep"|wc -l`
     if [ "$is_cava_ServerExist" = "0" ]; then
@@ -12,8 +12,7 @@ let
 
     exec ${pkgs.cava}/bin/cava -p ~/.config/cava/config1 | sed -u 's/;//g;s/0/▁/g;s/1/▂/g;s/2/▃/g;s/3/▄/g;s/4/▅/g;s/5/▆/g;s/6/▇/g;s/7/█/g;'
   '';
-in
-{
+in {
   programs.waybar.enable = true;
   programs.waybar.systemd.enable = true;
 

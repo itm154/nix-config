@@ -10,9 +10,9 @@
     # ./nvim.nix
 
     # Window manager configuration
-    ./wm
-    ./styles
-    ./interface
+    ./window-manager
+    ./user-interface
+    ./programs
   ];
 
   nixpkgs = {
@@ -50,7 +50,10 @@
   home.packages = with pkgs; [
     # Fonts
     corefonts
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono"]; })
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+
+    # Theming
+    gradience
   ];
 
   # Enable home-manager and git
