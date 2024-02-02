@@ -16,11 +16,185 @@ in {
   programs.waybar.enable = true;
   programs.waybar.systemd.enable = true;
 
-  # xdg.configFile."waybar/config.jsonc".source = ./config/config.jsonc;
-  xdg.configFile."waybar/style.css".source = ./config/style.css;
-  xdg.configFile."waybar/mocha.css".source = ./config/mocha.css;
-  # xdg.configFile."waybar/scripts/cava.sh".source = ./config/scripts/cava.sh;
-  
+  programs.waybar.style = ''
+        @define-color base   #1e1e2e;
+        @define-color mantle #181825;
+        @define-color crust  #11111b;
+
+        @define-color text     #cdd6f4;
+        @define-color subtext0 #a6adc8;
+        @define-color subtext1 #bac2de;
+
+        @define-color surface0 #313244;
+        @define-color surface1 #45475a;
+        @define-color surface2 #585b70;
+
+        @define-color overlay0 #6c7086;
+        @define-color overlay1 #7f849c;
+        @define-color overlay2 #9399b2;
+
+        @define-color blue      #89b4fa;
+        @define-color lavender  #b4befe;
+        @define-color sapphire  #74c7ec;
+        @define-color sky       #89dceb;
+        @define-color teal      #94e2d5;
+        @define-color green     #a6e3a1;
+        @define-color yellow    #f9e2af;
+        @define-color peach     #fab387;
+        @define-color maroon    #eba0ac;
+        @define-color red       #f38ba8;
+        @define-color mauve     #cba6f7;
+        @define-color pink      #f5c2e7;
+        @define-color flamingo  #f2cdcd;
+        @define-color rosewater #f5e0dc;
+
+        /* Global */
+        * {
+          font-family: JetBrains Mono Nerd Font;
+          font-weight: bold;
+        }
+
+    #custom-sep {
+          font-size: 18px;
+          color: @surface1;
+        }
+
+    #custom-sep,
+    #custom-playerctl,
+    #custom-cava,
+    #workspaces,
+    #clock,
+    #cpu,
+    #memory,
+    #pulseaudio,
+    #backlight,
+    #network,
+    #battery,
+    #tray {
+          padding: 5px 10px;
+          border-style: solid;
+          background-color: @base;
+          opacity: 1;
+          margin: 5px 0px 5px 0px;
+        }
+
+        window#waybar {
+          background: rgba(30, 30, 46, 0.5);
+          color: @base;
+        }
+
+        /* END-Global */
+
+        /* Left */
+    #workspaces {
+          background: @base;
+          border-radius: 12px;
+        }
+
+    #workspaces button {
+          border-radius: 16px;
+          color: @surface1;
+        }
+
+    #workspaces button.active {
+          color: @pink;
+          background-color: transparent;
+          border-radius: 16px;
+        }
+
+    #workspaces button:hover {
+          background-color: @pink;
+          color: @base;
+          border-radius: 100%;
+        }
+
+    #custom-cava {
+          border-radius: 12px;
+          color: @blue;
+        }
+
+    #custom-playerctl {
+          border-radius: 12px;
+          margin-left: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+          color: @text;
+        }
+
+        /* END-Left */
+
+        /* Middle */
+    #clock {
+          color: @sky;
+          border-radius: 12px;
+          margin-left: 10px;
+          margin-right: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        /* END-Middle */
+
+        /* Right */
+    #tray {
+          border-radius: 12px;
+          margin-right: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+    #cpu {
+          color: @lavender;
+          border-radius: 10px 0 0 10px;
+        }
+
+    #memory {
+          color: @mauve;
+        }
+
+    #pulseaudio {
+          color: @peach;
+        }
+
+    #backlight {
+          color: @yellow;
+          border-radius: 0 10px 10px 0;
+          margin-right: 10px;
+        }
+
+    #battery {
+          color: @sapphire;
+          border-radius: 10px 0 0 10px;
+        }
+
+    #battery.charging {
+          color: @yellow;
+        }
+
+        @keyframes blink {
+          to {
+            color: @red;
+          }
+        }
+
+    #battery.critical:not(.charging) {
+          color: @red;
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+
+    #network {
+          color: @green;
+          border-radius: 0 10px 10px 0;
+          margin-right: 10px;
+        }
+
+        /* END-Right */
+  '';
+
   xdg.configFile."waybar/config.json".source = ''
     {
       "layer": "top",
@@ -74,7 +248,7 @@ in {
         "tooltip": false
       },
       "custom/cava": {
-        "exec": "sh ~/.config/waybar/scripts/cava.sh",
+        "exec": "sh ${waybar-cava}/bin/waybar_cava",
         "format": "{}",
         "layer": "below",
         "output": "all",
@@ -139,6 +313,7 @@ in {
         "tooltip": false
       }
     }
-  ''
+  '';
+
   home.packages = [ waybar-cava ];
 }
