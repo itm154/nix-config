@@ -1,12 +1,16 @@
 { config, pkgs, ... }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
 
     sleep 1
 
     ${pkgs.swww}/bin/swww img ~/Pictures/Wallpapers/3.jpg &
+  '';
+
+  waybar-restart = pkgs.pkgs.writeShellScriptBin "waybar-restart" ''
+    killall waybar
+    waybar & disown
   '';
 in {
   home.packages = with pkgs; [
@@ -91,7 +95,7 @@ in {
         "$mainMod, N, exec, swaync-client -t"
 
         # Restart Waybar
-        "$shiftMod, W, exec, /home/itm154/.config/hypr/waybar.sh"
+        "$shiftMod, W, exec, ${waybar-restart}/bin/waybar-restart"
 
         # Global shortcut
         "ALT, Alt_R, pass,^discord$"
