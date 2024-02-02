@@ -43,12 +43,14 @@
     homeDirectory = "/home/itm154";
   };
 
+  # Enable font settings
+  fonts.fontconfig.enable = true;
+
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    # Wezterm currently is broken
-    # wezterm
-    kitty
-    gnome.nautilus
+    # Fonts
+    corefonts
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono"]; })
   ];
 
   # Enable home-manager and git

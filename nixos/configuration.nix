@@ -171,6 +171,15 @@
 
     libnotify
     cava
+
+    wezterm
+    kitty
+    gnome.nautilus
+    swww
+    waybar
+    rofi-wayland
+    grimblast
+    swaynotificationcenter
   ];
 
   # Window manager

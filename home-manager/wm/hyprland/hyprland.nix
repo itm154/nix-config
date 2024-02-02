@@ -13,14 +13,6 @@ let
     waybar & disown
   '';
 in {
-  home.packages = with pkgs; [
-    swww
-    waybar
-    rofi-wayland
-    grimblast
-    swaynotificationcenter
-  ];
-
 
   wayland.windowManager.hyprland = {
     enable = true;
