@@ -50,7 +50,7 @@
     "tooltip": false
   },
   "custom/cava": {
-    "exec": "waybar_cava",
+    "exec": "sh ~/.config/waybar/scripts/cava.sh",
     "format": "{}",
     "layer": "below",
     "output": "all",
@@ -100,9 +100,9 @@
       "critical": 15
     },
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-good": " {capacity}%",
-    "format-icons": ["", "", "", "", ""],
+    "format-charging": "󰂄 {capacity}%",
+    "format-good": "{capacity}%",
+    "format-icons": ["󰁻", "󰁽 ", "󰁿", "󰂁", "󰁹"],
     "tooltip": false
   },
   "network": {
