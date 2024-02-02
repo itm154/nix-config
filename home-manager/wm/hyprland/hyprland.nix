@@ -7,11 +7,6 @@ let
 
     ${pkgs.swww}/bin/swww img ~/Pictures/Wallpapers/3.jpg &
   '';
-
-  waybar-restart = pkgs.pkgs.writeShellScriptBin "waybar-restart" ''
-    killall waybar
-    waybar & disown
-  '';
 in {
 
   wayland.windowManager.hyprland = {
@@ -85,9 +80,6 @@ in {
 
         # Notification Center
         "$mainMod, N, exec, swaync-client -t"
-
-        # Restart Waybar
-        "$shiftMod, W, exec, ${waybar-restart}/bin/waybar-restart"
 
         # Global shortcut
         "ALT, Alt_R, pass,^discord$"
