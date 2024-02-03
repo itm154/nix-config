@@ -98,10 +98,12 @@
     };
   };
 
+
   # Display manager
   services.xserver = {
     enable = true;
     displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "rose-pine";
 
     # HID Devices
     libinput.enable = true;
@@ -165,29 +167,25 @@
 
   # Basic system packages
   environment.systemPackages = with pkgs; [
-    firefox
-    vim
-
-    brightnessctl
-
     alsa-utils
+    brightnessctl
+    cava
+    firefox
+    gnome.nautilus
+    grimblast
+    kitty
+    libnotify
     pamixer
     playerctl
-
     procps
-    libnotify
-    cava
-
-    wezterm
-    kitty
-    gnome.nautilus
-    swww
-    waybar
     rofi-wayland
-    grimblast
-    swaynotificationcenter
-    wl-clipboard
     sddm-rose-pine
+    swaynotificationcenter
+    swww
+    vim
+    waybar
+    wezterm
+    wl-clipboard
   ];
 
   # Window manager

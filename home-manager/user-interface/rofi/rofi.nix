@@ -92,15 +92,15 @@ let
   '';
   Icomoon-Feather = pkgs.stdenv.mkDerivation {
     name = "Icomoon-Feather";
+    dontUnpack = true;
     dontConfigure = true;
     src = pkgs.fetchurl {
       url = "https://github.com/adi1090x/rofi/raw/master/fonts/Icomoon-Feather.ttf";
       hash = "sha256-kKyBYq8r6+aL/vLWLgVqgTFjPWzGhYdqsMgmQhOBAVg=";
-      stripRoot = false;
     };
 
     installPhase = ''
-      mkdir $out/share/fonts/truetype/
+      mkdir -p $out/share/fonts/truetype/
       cp -R $src $out/share/fonts/truetype/
     '';
   };
