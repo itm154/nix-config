@@ -168,7 +168,6 @@
     alsa-utils
     pamixer
     playerctl
-    killall
 
     libnotify
     cava

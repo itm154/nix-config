@@ -9,7 +9,7 @@ let
     ${pkgs.swww}/bin/swww img ~/Pictures/Wallpapers/3.jpg &
   '';
   restartWaybar = pkgs.pkgs.writeShellScriptBin "restartWaybar" ''
-    ${pkgs.killall}/bin/kilall waybar
+    pkill waybar
     ${pkgs.waybar}/bin/waybar & disown
   '';
 in {
@@ -37,8 +37,8 @@ in {
         # Scripts
         "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
         "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-        "$mainMod, D, exec, ${launcher}"
-        "$mainMod, X, exec, ${powermenu}"
+        "$mainMod, D, exec, ${launcher}/bin/rofi-launcher"
+        "$mainMod, X, exec, ${powermenu}/bin/rofi-powermenu"
 
         # Device controls
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
