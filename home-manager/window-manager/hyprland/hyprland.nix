@@ -3,6 +3,7 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
+    ${pkgs.swaynotificationcenter}/bin/swaync &
 
     sleep 1
 
