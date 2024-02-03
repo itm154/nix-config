@@ -115,6 +115,11 @@
     flatpak.enable = true;
   };
 
+  # Prevent shutdown with short press
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+  '';
+
   xdg.portal.enable = true;
   services.printing.enable = true;
 
