@@ -3,4 +3,5 @@
 pkgs:
 {
   # example = pkgs.callPackage ./example { };
+  sddm-rose-pine = pkgs.callPackage ./sddm-rose-pine.nix { };
 }

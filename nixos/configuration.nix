@@ -182,6 +182,7 @@
     grimblast
     swaynotificationcenter
     wl-clipboard
+    sddm-rose-pine
   ];
 
   # Window manager
