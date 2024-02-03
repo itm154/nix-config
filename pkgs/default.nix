@@ -3,4 +3,5 @@
 pkgs:
 {
   # example = pkgs.callPackage ./example { };
+  fonts = pkgs.callPackage ./fonts.nix { };
 }

@@ -51,6 +51,7 @@
     # Fonts
     corefonts
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    Icomoon-Feather
 
     # Theming
     gradience
