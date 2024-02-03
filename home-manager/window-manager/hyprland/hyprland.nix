@@ -148,6 +148,7 @@ in {
           passes = 2;
         };
       };
+      blurls = [ "waybar" ];
 
       # More eyecandy
       animations = {
