@@ -181,6 +181,7 @@
     rofi-wayland
     grimblast
     swaynotificationcenter
+    wl-clipboard
   ];
 
   # Window manager
