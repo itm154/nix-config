@@ -37,8 +37,8 @@ in {
         # Scripts
         "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
         "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-        # $mainMod, D, exec, $HOME/.config/rofi/launchers/type-2/launcher.sh
-        # $mainMod, X, exec, $HOME/.config/rofi/powermenu/type-2/powermenu.sh
+        "$mainMod, D, exec, ${launcher}"
+        "$mainMod, X, exec, ${powermenu}"
 
         # Device controls
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
