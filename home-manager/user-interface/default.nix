@@ -1,1 +1,1 @@
-{ imports = [ ./themes ./waybar ./rofi ]; }
+{ imports = [ ./themes ./waybar ./rofi ./swaync ]; }

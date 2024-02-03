@@ -38,7 +38,7 @@ in {
         # Scripts
         "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
         "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-        "$mainMod, D, exec, ${pkgs.launcher}/bin/rofi-launcher"
+        "$mainMod, D, exec, rofi-launcher"
         "$mainMod, X, exec, $HOME/.config/rofi/powermenu/powermenu.sh"
 
         # Device controls
