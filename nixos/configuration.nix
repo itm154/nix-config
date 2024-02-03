@@ -169,6 +169,7 @@
     pamixer
     playerctl
 
+    procps
     libnotify
     cava
 
