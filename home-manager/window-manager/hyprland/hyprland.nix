@@ -1,11 +1,16 @@
 { config, pkgs, ... }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
 
     sleep 1
 
     ${pkgs.swww}/bin/swww img ~/Pictures/Wallpapers/3.jpg &
+  '';
+  restartWaybar = pkgs.pkgs.writeShellScriptBin "restartWaybar" ''
+    ${pkgs.killall}/bin/kilall waybar
+    ${pkgs.waybar}/bin/waybar & disown
   '';
 in {
 
@@ -80,6 +85,9 @@ in {
 
         # Notification Center
         "$mainMod, N, exec, swaync-client -t"
+
+        # Restart waybar
+        "$shiftMod, W, exec, ${restartWaybar}/bin/restartWaybar"
 
         # Global shortcut
         "ALT, Alt_R, pass,^discord$"
