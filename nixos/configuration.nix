@@ -123,6 +123,7 @@
 
   xdg.portal.enable = true;
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.gutenprint ];
 
   # Securities
   security.pam.services = {
@@ -169,16 +170,26 @@
     alsa-utils
     brightnessctl
     cava
+    evince
     firefox
+    gnome.file-roller
+    gnome.gnome-calculator
+    gnome.gnome-disk-utility
+    gnome.gnome-font-viewer
+    gnome.gnome-maps
     gnome.nautilus
+    gnome.totem
     grimblast
     kitty
     libnotify
+    libsForQt5.print-manager
+    loupe
     pamixer
     playerctl
     procps
     rofi-wayland
     sddm-rose-pine
+    snapshot
     swaynotificationcenter
     swww
     vim
