@@ -1,16 +1,11 @@
-{ stdenvNoCC
-, fetchFromGitHub
-, libsForQt5
-}:
+{ stdenvNoCC, fetchFromGitHub, libsForQt5 }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "sddm-rose-pine-theme";
   version = "1.2";
   dontBuild = true;
 
-  propagatedUserEnvPkgs = [
-    libsForQt5.qt5.qtgraphicaleffects
-  ];
+  propagatedUserEnvPkgs = [ libsForQt5.qt5.qtgraphicaleffects ];
 
   src = fetchFromGitHub {
     owner = "lwndhrst";

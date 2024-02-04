@@ -1,6 +1,6 @@
-{ config, pkgs, ...}: {
+{ config, pkgs, ... }: {
   programs.btop.enable = true;
-  programs.btop.settings = { 
+  programs.btop.settings = {
     color_theme = "$HOME/.config/btop/themes/catppuccin_mocha.theme";
     theme_background = true;
   };

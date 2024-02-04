@@ -98,7 +98,6 @@
     };
   };
 
-
   # Display manager
   services.xserver = {
     enable = true;

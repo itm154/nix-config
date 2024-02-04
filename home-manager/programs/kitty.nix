@@ -1,11 +1,11 @@
-{ config, pkgs, ...}: {
+{ config, pkgs, ... }: {
   programs.kitty.enable = true;
   programs.kitty.shellIntegration = {
     enableFishIntegration = true;
     enableBashIntegration = true;
   };
 
-  programs.kitty.themes = "Catppuccin-Mocha";
+  programs.kitty.theme = "Catppuccin-Mocha";
 
   programs.kitty.font = {
     name = "JetBrains Mono Nerd Font";
@@ -18,7 +18,8 @@
     tab_bar_edge = "bottom";
     tab_bar_style = "fade";
     tab_powerline_style = "slanted";
-    tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+    tab_title_template =
+      "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
   };
 
   programs.kitty.keybindings = {
@@ -29,4 +30,4 @@
     "cmd+w" = "close_tab";
   };
 }
-  
+
