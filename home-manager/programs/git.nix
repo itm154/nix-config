@@ -3,9 +3,10 @@
     enable = true;
     package = pkgs.gitFull;
     extraConfig = {
-      credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
+      credential = {
+        credentialstore = "secretservice";
+        helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
+      };
     };
 
     userName = "itm154";
