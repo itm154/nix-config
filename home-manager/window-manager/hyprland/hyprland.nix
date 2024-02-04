@@ -27,7 +27,12 @@ in {
       exec-once = "${startupScript}/bin/start";
 
       # Environment variables for hyprland
-      env = [ "QT_QPA_PLATFORM,wayland" "SDL_VIDEODRIVER,wayland" ];
+      env = [
+        "QT_QPA_PLATFORM,wayland"
+        "SDL_VIDEODRIVER,wayland"
+        "MOZ_ENABLE_WAYLAND,1"
+        "GDK_BACKEND,wayland"
+      ];
 
       # Keybindings
       bind = [

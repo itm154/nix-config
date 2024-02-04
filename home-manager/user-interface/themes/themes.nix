@@ -29,7 +29,7 @@
 
   # QT
   qt.enable = true;
-  qt.platformTheme = "gtk";
+  qt.platformTheme = "qtct";
   qt.style.name = "kvantum";
   home.packages = with pkgs;
     [

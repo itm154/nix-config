@@ -97,6 +97,13 @@
       LC_TIME = "en_US.UTF-8";
     };
   };
+  # Weeaboo input method
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
+  };
+
+  services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
   # Display manager
   services.xserver = {
@@ -160,10 +167,11 @@
   };
 
   # Wayland fixes
-  environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-  };
+  environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
+
+  # Driver for drawing tablets
+  hardware.opentabletdriver.enable = true;
+  hardware.opentabletdriver.daemon.enable = true;
 
   # Basic system packages
   environment.systemPackages = with pkgs; [
@@ -184,7 +192,9 @@
     libnotify
     libsForQt5.print-manager
     loupe
+    networkmanagerapplet
     pamixer
+    pavucontrol
     playerctl
     procps
     rofi-wayland

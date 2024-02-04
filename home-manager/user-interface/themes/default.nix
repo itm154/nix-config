@@ -1,1 +1,1 @@
-{ imports = [ ./styles.nix ]; }
+{ imports = [ ./themes.nix ]; }

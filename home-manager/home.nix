@@ -49,11 +49,21 @@
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
     # Fonts
+    source-sans
+    source-serif
+    source-han-sans
+    source-han-mono
+    source-han-serif
     corefonts
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
 
     # Theming
     gradience
+
+    (pkgs.discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
   ];
 
   # Enable home-manager and git
