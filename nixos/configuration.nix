@@ -21,11 +21,11 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-# You can also add overlays exported from other flakes:
+      # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
       inputs.rust-overlay.overlays.default
-      
+
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -78,6 +78,7 @@
       initialPassword = "1234";
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" ];
+      shell = pkgs.fish;
     };
   };
 
@@ -142,7 +143,7 @@
   # Gnome polkit
   security.polkit.enable = true;
   systemd = {
-    user = { 
+    user = {
       services.polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
         wantedBy = [ "graphical-session.target" ];
@@ -159,7 +160,7 @@
       };
       extraConfig = ''
         DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-        '';
+      '';
     };
   };
 
@@ -217,6 +218,8 @@
     wl-clipboard
   ];
 
+  programs.fish.enable = true;
+  
   # Window manager
   programs.hyprland.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];

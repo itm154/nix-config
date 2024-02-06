@@ -31,7 +31,6 @@ in {
         "fcitx5"
       ];
 
-
       # Environment variables for hyprland
       env = [
         "QT_QPA_PLATFORM,wayland"
