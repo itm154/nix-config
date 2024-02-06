@@ -302,9 +302,9 @@ in {
     "network" = {
       "format-linked" = "{ifname} (No IP) ";
       "format-wifi" = " ";
-      "format-ethernet" = " ";
+      "format-ethernet" = "󰈀 ";
       "format-disabled" = "󰌙 ";
-      "format-disconnected" = "睊 ";
+      "format-disconnected" = "󰌙 ";
       "format-alt" = "{essid}: {ipaddr}/{cidr}";
       "tooltip" = false;
     };
