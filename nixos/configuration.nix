@@ -21,10 +21,11 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
+# You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
+      inputs.rust-overlay.overlays.default
+      
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -141,19 +142,24 @@
   # Gnome polkit
   security.polkit.enable = true;
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart =
-          "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
+    user = { 
+      services.polkit-gnome-authentication-agent-1 = {
+        description = "polkit-gnome-authentication-agent-1";
+        wantedBy = [ "graphical-session.target" ];
+        wants = [ "graphical-session.target" ];
+        after = [ "graphical-session.target" ];
+        serviceConfig = {
+          Type = "simple";
+          ExecStart =
+            "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
+        };
       };
+      extraConfig = ''
+        DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+        '';
     };
   };
 
@@ -180,6 +186,7 @@
     cava
     evince
     firefox
+    gcc_multi
     gnome.file-roller
     gnome.gnome-calculator
     gnome.gnome-disk-utility
@@ -188,6 +195,7 @@
     gnome.nautilus
     gnome.totem
     grimblast
+    libsForQt5.kate
     kitty
     libnotify
     libsForQt5.print-manager
@@ -198,6 +206,7 @@
     playerctl
     procps
     rofi-wayland
+    rust-bin.stable.latest.default
     sddm-rose-pine
     snapshot
     swaynotificationcenter
