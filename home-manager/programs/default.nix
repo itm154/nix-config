@@ -1,1 +1,1 @@
-{ imports = [ ./cava ./kitty.nix ./git.nix ./btop ]; }
+{ imports = [ ./cava ./kitty.nix ./git.nix ./btop ./fish ]; }
