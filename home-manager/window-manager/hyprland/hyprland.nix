@@ -24,14 +24,22 @@ in {
 
       monitor = "eDP-1, 1920x1080@60, 0x0, 1";
 
-      exec-once = "${startupScript}/bin/start";
+      exec-once = [
+        "${startupScript}/bin/start"
+
+        # Temporary fix for fcitx5
+        "fcitx5"
+      ];
+
 
       # Environment variables for hyprland
       env = [
         "QT_QPA_PLATFORM,wayland"
+        "QT_STYLE_OVERRIDE,kvantum"
         "SDL_VIDEODRIVER,wayland"
         "MOZ_ENABLE_WAYLAND,1"
         "GDK_BACKEND,wayland"
+        "GTK_USE_PORTAL,1"
       ];
 
       # Keybindings
