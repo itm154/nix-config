@@ -186,6 +186,7 @@
     brightnessctl
     cava
     evince
+    eza
     firefox
     gcc_multi
     gnome.file-roller
@@ -196,7 +197,6 @@
     gnome.nautilus
     gnome.totem
     grimblast
-    libsForQt5.kate
     kitty
     libnotify
     libsForQt5.print-manager
@@ -219,7 +219,7 @@
   ];
 
   programs.fish.enable = true;
-  
+
   # Window manager
   programs.hyprland.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
