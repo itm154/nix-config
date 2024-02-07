@@ -34,11 +34,15 @@ in {
       # Environment variables for hyprland
       env = [
         "QT_QPA_PLATFORM,wayland"
-        "QT_STYLE_OVERRIDE,kvantum"
+        # "QT_STYLE_OVERRIDE,kvantum"
         "SDL_VIDEODRIVER,wayland"
+        "SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS,0"
         "MOZ_ENABLE_WAYLAND,1"
         "GDK_BACKEND,wayland"
         "GTK_USE_PORTAL,1"
+        "GTK_IM_MODULE,fcitx"
+        "QT_IM_MODULE,fcitx"
+        "SDL_IM_MODULE,fcitx"
       ];
 
       # Keybindings
