@@ -77,7 +77,7 @@
     itm154 = {
       initialPassword = "1234";
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "docker" ];
       shell = pkgs.fish;
     };
   };
@@ -99,12 +99,12 @@
       LC_TIME = "en_US.UTF-8";
     };
   };
+
   # Weeaboo input method
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
   };
-
   services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
   # Display manager
@@ -218,11 +218,19 @@
     wl-clipboard
   ];
 
+  # App specific options
   programs.fish.enable = true;
+
+  # Enables trash bin in nautilus
+  services.gvfs.enable = true;
 
   # Window manager
   programs.hyprland.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+  # Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.storageDriver = "btrfs";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";
