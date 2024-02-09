@@ -64,6 +64,10 @@
       withOpenASAR = true;
       withVencord = true;
     })
+
+    bottles
+    protonup-qt
+    protontricks
   ];
 
   # Enable home-manager and git
