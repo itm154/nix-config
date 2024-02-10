@@ -1,16 +1,15 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     ./nvidia.nix
   ];
@@ -21,8 +20,6 @@
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
 
       inputs.rust-overlay.overlays.default
 
@@ -33,21 +30,35 @@
       #   });
       # })
     ];
-    config = { allowUnfree = true; };
+    config = {allowUnfree = true;};
   };
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; }))
+  nix.registry =
+    (lib.mapAttrs (_: flake: {inherit flake;}))
     ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "/etc/nix/path" ];
-  environment.etc = lib.mapAttrs' (name: value: {
-    name = "nix/path/${name}";
-    value.source = value.flake;
-  }) config.nix.registry;
+  nix.nixPath = ["/etc/nix/path"];
+  environment.etc =
+    lib.mapAttrs' (name: value: {
+      name = "nix/path/${name}";
+      value.source = value.flake;
+    })
+    config.nix.registry;
+
+  # User config
+  programs.fish.enable = true;
+  users.users = {
+    itm154 = {
+      initialPassword = "1234";
+      isNormalUser = true;
+      extraGroups = ["wheel" "networkmanager" "podman"];
+      shell = pkgs.fish;
+    };
+  };
 
   # Enable flakes and new 'nix' command
   # Deduplicate and optimize nix store
@@ -56,14 +67,7 @@
     auto-optimise-store = true;
   };
 
-  networking = {
-    hostName = "asus-nix";
-    networkmanager = {
-      enable = true;
-      wifi.backend = "iwd";
-    };
-  };
-
+  # Essential system config
   boot.loader = {
     systemd-boot = {
       enable = true;
@@ -72,21 +76,39 @@
     efi.canTouchEfiVariables = true;
   };
 
-  # User config
-  users.users = {
-    itm154 = {
-      initialPassword = "1234";
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "docker" ];
-      shell = pkgs.fish;
+  # Internet
+  networking = {
+    hostName = "asus-nix";
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
     };
   };
 
-  # Locales
+  # Display manager
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "rose-pine";
+    libinput.enable = true;
+    layout = "us";
+    xkbVariant = "";
+  };
+
+  # Audio
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # Locales and input
   time.timeZone = "Asia/Kuching";
   i18n = {
     defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" ];
+    supportedLocales = ["en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8"];
     extraLocaleSettings = {
       LC_ADDRESS = "en_US.UTF-8";
       LC_IDENTIFICATION = "en_US.UTF-8";
@@ -100,59 +122,38 @@
     };
   };
 
-  # Weeaboo input method
   i18n.inputMethod = {
     enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-gtk ];
+    fcitx5.addons = with pkgs; [fcitx5-mozc fcitx5-gtk];
   };
   services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
-  # Display manager
-  services.xserver = {
-    enable = true;
-    displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "rose-pine";
-
-    # HID Devices
-    libinput.enable = true;
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Essential services
+  # Enable flatpak and keyring
   services = {
     gnome.gnome-keyring.enable = true;
     flatpak.enable = true;
   };
 
-  # Prevent shutdown with short press
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-  '';
-
-  xdg.portal.enable = true;
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.gutenprint ];
+  services.printing.drivers = [pkgs.gutenprint];
 
-  # Securities
+  services.dbus.enable = true;
   security.pam.services = {
     sddm.enableGnomeKeyring = true;
     # swaylock = {};
   };
 
-  # Gnome polkit
   security.polkit.enable = true;
   systemd = {
     user = {
       services.polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
-        wantedBy = [ "graphical-session.target" ];
-        wants = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
+        wantedBy = ["graphical-session.target"];
+        wants = ["graphical-session.target"];
+        after = ["graphical-session.target"];
         serviceConfig = {
           Type = "simple";
-          ExecStart =
-            "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
           Restart = "on-failure";
           RestartSec = 1;
           TimeoutStopSec = 10;
@@ -164,27 +165,33 @@
     };
   };
 
-  # Audio
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+  # Window manager
+  programs.hyprland.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # Wayland fixes
-  environment.sessionVariables = { WLR_NO_HARDWARE_CURSORS = "1"; };
+  environment.sessionVariables = {WLR_NO_HARDWARE_CURSORS = "1";};
+
+  # Enables trash bin in nautilus
+  services.gvfs.enable = true;
+
+  # Prevent shutdown with short press
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+  '';
 
   # Driver for drawing tablets
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
 
-  # Basic system packages
+  # System packages
   environment.systemPackages = with pkgs; [
     alsa-utils
+    arion
     brightnessctl
     cava
+    docker-client
     evince
     eza
     firefox
@@ -218,19 +225,42 @@
     wl-clipboard
   ];
 
-  # App specific options
-  programs.fish.enable = true;
+  fonts.packages = with pkgs; [
+    source-sans
+    source-serif
+    source-han-sans
+    source-han-mono
+    source-han-serif
+    corefonts
+    (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+  ];
 
-  # Enables trash bin in nautilus
-  services.gvfs.enable = true;
-
-  # Window manager
-  programs.hyprland.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
+  ### OTHER CONFIGS ###
   # Docker
-  virtualisation.docker.enable = true;
+  virtualisation.docker.enable = false;
   virtualisation.docker.storageDriver = "btrfs";
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
+
+  # Fixes issues with fonts not appearing
+  system.fsPackages = [pkgs.bindfs];
+  fileSystems = let
+    mkRoSymBind = path: {
+      device = path;
+      fsType = "fuse.bindfs";
+      options = ["ro" "resolve-symlinks" "x-gvfs-hide"];
+    };
+    aggregatedFonts = pkgs.buildEnv {
+      name = "system-fonts";
+      paths = config.fonts.fonts;
+      pathsToLink = ["/share/fonts"];
+    };
+  in {
+    # Create an FHS mount to support flatpak host icons/fonts
+    "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
+    "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";

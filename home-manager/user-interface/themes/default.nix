@@ -1,1 +1,1 @@
-{ imports = [ ./themes.nix ]; }
+{imports = [./themes.nix];}

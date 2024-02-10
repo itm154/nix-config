@@ -1,1 +1,1 @@
-{ imports = [ ./btop.nix ]; }
+{imports = [./btop.nix];}

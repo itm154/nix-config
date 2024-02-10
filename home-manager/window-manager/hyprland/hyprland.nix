@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
     ${pkgs.swww}/bin/swww init &
@@ -14,7 +17,6 @@ let
     ${pkgs.waybar}/bin/waybar & disown
   '';
 in {
-
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -46,77 +48,81 @@ in {
       ];
 
       # Keybindings
-      bind = [
-        # Applications
-        "$mainMod, Return, exec, kitty"
-        "$mainMod, B, exec, firefox"
+      bind =
+        [
+          # Applications
+          "$mainMod, Return, exec, kitty"
+          "$mainMod, B, exec, firefox"
 
-        # Scripts
-        "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-        "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-        "$mainMod, D, exec, rofi-launcher"
-        "$mainMod, X, exec, $HOME/.config/rofi/powermenu/powermenu.sh"
+          # Scripts
+          "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+          "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+          "$mainMod, D, exec, rofi-launcher"
+          "$mainMod, X, exec, $HOME/.config/rofi/powermenu/powermenu.sh"
 
-        # Device controls
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        "$mainMod, XF86AudioRaiseVolume, exec, brightnessctl set 5%+"
-        "$mainMod, XF86AudioLowerVolume, exec, brightnessctl set 5%-"
+          # Device controls
+          ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+          ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+          "$mainMod, XF86AudioRaiseVolume, exec, brightnessctl set 5%+"
+          "$mainMod, XF86AudioLowerVolume, exec, brightnessctl set 5%-"
 
-        ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-        ", XF86AudioLowerVolume, exec, pamixer -d 5"
-        ", XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
-        ", XF86AudioPlay, exec, playerctl play-pause"
-        "$mainMod, SPACE, exec, playerctl play-pause"
+          ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+          ", XF86AudioLowerVolume, exec, pamixer -d 5"
+          ", XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          "$mainMod, SPACE, exec, playerctl play-pause"
 
-        # General keybindings
-        "$mainMod, Q, killactive"
-        "$mainMod, G, togglefloating"
-        "$mainMod, M, fullscreen"
-        "$mainMod, S, pseudo"
-        "$mainMod, V, togglesplit,"
+          # General keybindings
+          "$mainMod, Q, killactive"
+          "$mainMod, G, togglefloating"
+          "$mainMod, M, fullscreen"
+          "$mainMod, S, pseudo"
+          "$mainMod, V, togglesplit,"
 
-        # Change window focus
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+          # Change window focus
+          "$mainMod, H, movefocus, l"
+          "$mainMod, L, movefocus, r"
+          "$mainMod, K, movefocus, u"
+          "$mainMod, J, movefocus, d"
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        # Move windows in workspace
-        "$shiftMod, H, movewindow, l"
-        "$shiftMod, L, movewindow, r"
-        "$shiftMod, K, movewindow, u"
-        "$shiftMod, J, movewindow, d"
-        "$shiftMod, left, movewindow, l"
-        "$shiftMod, right, movewindow, r"
-        "$shiftMod, up, movewindow, u"
-        "$shiftMod, down, movewindow, d"
+          # Move windows in workspace
+          "$shiftMod, H, movewindow, l"
+          "$shiftMod, L, movewindow, r"
+          "$shiftMod, K, movewindow, u"
+          "$shiftMod, J, movewindow, d"
+          "$shiftMod, left, movewindow, l"
+          "$shiftMod, right, movewindow, r"
+          "$shiftMod, up, movewindow, u"
+          "$shiftMod, down, movewindow, d"
 
-        # Change workspaces
-        "$ctrlMod, K, workspace, e+1"
-        "$ctrlMod, J, workspace, e-1"
+          # Change workspaces
+          "$ctrlMod, K, workspace, e+1"
+          "$ctrlMod, J, workspace, e-1"
 
-        # Notification Center
-        "$mainMod, N, exec, swaync-client -t"
+          # Notification Center
+          "$mainMod, N, exec, swaync-client -t"
 
-        # Restart waybar
-        "$shiftMod, W, exec, ${restartWaybar}/bin/restartWaybar"
+          # Restart waybar
+          "$shiftMod, W, exec, ${restartWaybar}/bin/restartWaybar"
 
-        # Global shortcut
-        "ALT, Alt_R, pass,^discord$"
-      ] ++ (
-        # Workspaces
-        # binds $mainMod + [shift +] {1..6} to [move to] workspace {1..10}
-        builtins.concatLists (builtins.genList (x:
-          let ws = let c = (x + 1) / 6; in builtins.toString (x + 1 - (c * 6));
-          in [
-            "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
-            "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-          ]) 6));
+          # Global shortcut
+          "ALT, Alt_R, pass,^discord$"
+        ]
+        ++ (
+          # Workspaces
+          # binds $mainMod + [shift +] {1..6} to [move to] workspace {1..10}
+          builtins.concatLists (builtins.genList (x: let
+              ws = let c = (x + 1) / 6; in builtins.toString (x + 1 - (c * 6));
+            in [
+              "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+              "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+            ])
+            6)
+        );
 
       # Mousebindings
       bindm = [
@@ -164,7 +170,7 @@ in {
           passes = 2;
         };
       };
-      blurls = [ "waybar" ];
+      blurls = ["waybar"];
 
       # More eyecandy
       animations = {
@@ -187,11 +193,10 @@ in {
         preserve_split = true;
         # force_split = 2
       };
-      master = { new_is_master = true; };
+      master = {new_is_master = true;};
 
       # Rules
-      windowrule =
-        [ "float, Rofi" "tile, kitty" "tile, wezterm" "tile, spotify" ];
+      windowrule = ["float, Rofi" "tile, kitty" "tile, wezterm" "tile, spotify"];
 
       # Miscellanious
       misc = {

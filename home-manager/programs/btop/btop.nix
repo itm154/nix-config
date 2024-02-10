@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.btop.enable = true;
   programs.btop.settings = {
     color_theme = "/home/itm154/.config/btop/themes/catppuccin_mocha.theme";

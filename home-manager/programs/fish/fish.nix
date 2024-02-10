@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
@@ -29,10 +33,10 @@
       mixer = "alsamixer --no-color";
 
       # Better ls
-      ls="eza -al --color=always --group-directories-first";
-      la="eza -a --color=always --group-directories-first";
-      ll="eza -l --color=always --group-directories-first";
-      lt="eza -aT --color=always --group-directories-first";
+      ls = "eza -al --color=always --group-directories-first";
+      la = "eza -a --color=always --group-directories-first";
+      ll = "eza -l --color=always --group-directories-first";
+      lt = "eza -aT --color=always --group-directories-first";
     };
   };
 
@@ -40,14 +44,17 @@
     enable = true;
     enableFishIntegration = true;
     enableBashIntegration = true;
-    settings = {
-      format = "$all";
-      palette = "catppuccin_mocha";
-    } // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "starship";
-      rev = "5629d23";
-      sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
-    } + /palettes/mocha.toml));
+    settings =
+      {
+        format = "$all";
+        palette = "catppuccin_mocha";
+      }
+      // builtins.fromTOML (builtins.readFile (pkgs.fetchFromGitHub {
+          owner = "catppuccin";
+          repo = "starship";
+          rev = "5629d23";
+          sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
+        }
+        + /palettes/mocha.toml));
   };
 }

@@ -1,15 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # outputs.homeManagerModules.example
-
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
-
-    # Window manager configuration
     ./window-manager
     ./user-interface
     ./programs
@@ -17,7 +14,6 @@
 
   nixpkgs = {
     overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
@@ -48,26 +44,20 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    # Fonts
-    source-sans
-    source-serif
-    source-han-sans
-    source-han-mono
-    source-han-serif
-    corefonts
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-
     # Theming
     gradience
 
+    # See https://github.com/NixOS/nixpkgs/issues/195512
     (pkgs.discord.override {
       withOpenASAR = true;
       withVencord = true;
     })
 
-    bottles
+    # Gaming
+    steam
     protonup-qt
     protontricks
+    winetricks
   ];
 
   # Enable home-manager and git

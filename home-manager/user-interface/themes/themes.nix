@@ -1,7 +1,11 @@
-{ config, pkgs, ... }: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   # Prefer dark mode
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {color-scheme = "prefer-dark";};
   };
 
   # Cursor settings
@@ -31,23 +35,19 @@
   qt.enable = true;
   qt.platformTheme = "qtct";
   qt.style.name = "kvantum";
-  home.packages = with pkgs;
-    [
-      (catppuccin-kvantum.override {
-        accent = "Rosewater";
-        variant = "Mocha";
-      })
-    ];
+  home.packages = with pkgs; [
+    (catppuccin-kvantum.override {
+      accent = "Rosewater";
+      variant = "Mocha";
+    })
+  ];
 
   # This generates the required kvantim config file to set the current qt theme
   xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".source =
-    (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
+    "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
       General.theme = "Catppuccin-Mocha-Rosewater";
     };
 
-    "Kvantum/Catppuccin-Mocha-Rosewater".source = 
-    "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Rosewater";
+    "Kvantum/Catppuccin-Mocha-Rosewater".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Rosewater";
   };
 }
-

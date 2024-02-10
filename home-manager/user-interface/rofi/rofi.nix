@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   launcher = pkgs.pkgs.writeShellScriptBin "rofi-launcher" ''
     ${pkgs.rofi-wayland}/bin/rofi -show drun -theme $HOME/.config/rofi/launcher/style.rasi
   '';
   powermenu = pkgs.pkgs.writeShellScriptBin "rofi-powermenu" ''
-        
+
         uptime="`uptime -p | sed -e 's/up //g'`"
         host=`hostname`
 
@@ -95,8 +98,7 @@ let
     dontUnpack = true;
     dontConfigure = true;
     src = pkgs.fetchurl {
-      url =
-        "https://github.com/adi1090x/rofi/raw/master/fonts/Icomoon-Feather.ttf";
+      url = "https://github.com/adi1090x/rofi/raw/master/fonts/Icomoon-Feather.ttf";
       hash = "sha256-kKyBYq8r6+aL/vLWLgVqgTFjPWzGhYdqsMgmQhOBAVg=";
     };
 
@@ -115,5 +117,5 @@ in {
     recursive = true;
   };
 
-  home.packages = [ launcher powermenu Icomoon-Feather ];
+  home.packages = [launcher powermenu Icomoon-Feather];
 }
