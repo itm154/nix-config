@@ -225,6 +225,7 @@
     wl-clipboard
   ];
 
+  fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     source-sans
     source-serif
@@ -232,7 +233,6 @@
     source-han-mono
     source-han-serif
     corefonts
-    (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
   ];
 
   ### OTHER CONFIGS ###
@@ -253,13 +253,20 @@
     };
     aggregatedFonts = pkgs.buildEnv {
       name = "system-fonts";
-      paths = config.fonts.fonts;
+      paths = config.fonts.packages;
       pathsToLink = ["/share/fonts"];
+    };
+    aggregatedIcons = pkgs.buildEnv {
+      name = "system-icons";
+      paths = with pkgs; [
+        gnome.gnome-themes-extra
+      ];
+      pathsToLink = [ "/share/icons" ];
     };
   in {
     # Create an FHS mount to support flatpak host icons/fonts
-    "/usr/share/icons" = mkRoSymBind (config.system.path + "/share/icons");
-    "/usr/share/fonts" = mkRoSymBind (aggregatedFonts + "/share/fonts");
+    "/usr/share/icons" = mkRoSymBind "${aggregatedIcons}/share/icons";
+    "/usr/share/fonts" = mkRoSymBind "${aggregatedFonts}/share/fonts";
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

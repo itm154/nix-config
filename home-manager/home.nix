@@ -58,6 +58,9 @@
     protonup-qt
     protontricks
     winetricks
+
+    # Font
+    (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
   ];
 
   # Enable home-manager and git
