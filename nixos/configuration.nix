@@ -51,11 +51,12 @@
 
   # User config
   programs.fish.enable = true;
+  programs.adb.enable = true;
   users.users = {
     itm154 = {
       initialPassword = "1234";
       isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager" "podman"];
+      extraGroups = ["adbusers" "wheel" "networkmanager" "podman"];
       shell = pkgs.fish;
     };
   };
