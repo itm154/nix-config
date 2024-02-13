@@ -84,6 +84,25 @@
       enable = true;
       wifi.backend = "iwd";
     };
+    firewall = {
+      enable = true;
+      # 53317 for Localsend
+      allowedTCPPorts = [80 443 53317];
+      allowedUDPPortRanges = [
+        {
+          from = 4000;
+          to = 4007;
+        }
+        {
+          from = 53315;
+          to = 53318;
+        }
+        {
+          from = 8000;
+          to = 8010;
+        }
+      ];
+    };
   };
 
   # Display manager
@@ -262,7 +281,7 @@
       paths = with pkgs; [
         gnome.gnome-themes-extra
       ];
-      pathsToLink = [ "/share/icons" ];
+      pathsToLink = ["/share/icons"];
     };
   in {
     # Create an FHS mount to support flatpak host icons/fonts
