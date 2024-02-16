@@ -242,6 +242,7 @@
     vim
     waybar
     wezterm
+    wineWowPackages.stable
     wl-clipboard
   ];
 
