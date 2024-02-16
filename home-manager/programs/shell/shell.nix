@@ -37,6 +37,8 @@
       la = "eza -a --color=always --group-directories-first";
       ll = "eza -l --color=always --group-directories-first";
       lt = "eza -aT --color=always --group-directories-first";
+
+      cd = "z";
     };
   };
 
@@ -56,5 +58,10 @@
           sha256 = "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=";
         }
         + /palettes/mocha.toml));
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
   };
 }
