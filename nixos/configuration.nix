@@ -241,9 +241,13 @@
     swww
     vim
     waybar
-    wezterm
     wineWowPackages.stable
     wl-clipboard
+
+    # Unstable packages
+    unstable.wezterm
+    unstable.wpsoffice
+    unstable.xwaylandvideobridge
   ];
 
   fonts.fontDir.enable = true;
@@ -281,6 +285,7 @@
       name = "system-icons";
       paths = with pkgs; [
         gnome.gnome-themes-extra
+        bibata-cursors
       ];
       pathsToLink = ["/share/icons"];
     };
