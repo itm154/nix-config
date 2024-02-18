@@ -47,11 +47,12 @@
     # Theming
     gradience
 
+    # Use Vesktop flatpak instead
     # See https://github.com/NixOS/nixpkgs/issues/195512
-    (pkgs.discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
+    # (pkgs.discord.override {
+    #   withOpenASAR = true;
+    #   withVencord = true;
+    # })
 
     # Gaming
     steam

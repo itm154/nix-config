@@ -108,8 +108,10 @@
     '';
   };
 in {
-  programs.rofi.enable = true;
-  programs.rofi.package = pkgs.rofi-wayland;
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+  };
 
   # Temporary, definitely would use the home manager module later but im too lazy right now
   home.file.".config/rofi" = {

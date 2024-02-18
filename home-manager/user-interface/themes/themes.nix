@@ -17,24 +17,29 @@
   };
 
   # GTK
-  gtk.enable = true;
-  gtk.font = {
-    package = pkgs.cantarell-fonts;
-    name = "Cantarell";
-    size = 11;
+  gtk = {
+    enable = true;
+    font = {
+      package = pkgs.cantarell-fonts;
+      name = "Cantarell";
+      size = 11;
+    };
+    theme.package = pkgs.adw-gtk3;
+    theme.name = "adw-gtk3-dark";
+    iconTheme.name = "Papirus-Dark";
+    iconTheme.package = pkgs.catppuccin-papirus-folders.override {
+      flavor = "mocha";
+      accent = "red";
+    };
   };
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3-dark";
-  gtk.iconTheme.package = pkgs.catppuccin-papirus-folders.override {
-    flavor = "mocha";
-    accent = "red";
-  };
-  gtk.iconTheme.name = "Papirus-Dark";
 
   # QT
-  qt.enable = true;
-  qt.platformTheme = "qtct";
-  qt.style.name = "kvantum";
+  qt = {
+    enable = true;
+    platformTheme = "qtct";
+    style.name = "kvantum";
+  };
+
   home.packages = with pkgs; [
     (catppuccin-kvantum.override {
       accent = "Rosewater";
