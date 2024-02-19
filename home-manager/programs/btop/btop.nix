@@ -8,6 +8,7 @@
     settings = {
       color_theme = "/home/itm154/.config/btop/themes/catppuccin_mocha.theme";
       theme_background = false;
+      vim_keys = true;
     };
   };
 
