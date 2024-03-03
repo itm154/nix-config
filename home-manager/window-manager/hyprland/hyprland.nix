@@ -155,6 +155,10 @@ in {
         };
       };
 
+      gestures = {
+        workspace_swipe = true;
+      };
+
       # Eyecandy
       decoration = {
         rounding = 8;
