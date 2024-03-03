@@ -201,6 +201,9 @@
     HandlePowerKey=ignore
   '';
 
+  # Power management for laptop
+  services.tlp.enable = true;
+
   # Driver for drawing tablets
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
