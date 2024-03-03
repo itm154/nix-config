@@ -67,7 +67,9 @@
     # Font
     (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
 
+    # Discord
     unstable.vesktop
+    arrpc
   ];
 
   # Enable home-manager and git

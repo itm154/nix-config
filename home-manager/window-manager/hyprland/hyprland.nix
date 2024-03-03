@@ -11,6 +11,7 @@
     sleep 1
 
     ${pkgs.swww}/bin/swww img ~/Pictures/Wallpapers/3.jpg &
+    ${pkgs.arrpc}/bin/arrpc &
   '';
   restartWaybar = pkgs.pkgs.writeShellScriptBin "restartWaybar" ''
     pkill waybar
