@@ -18,6 +18,9 @@
       outputs.overlays.modifications
       outputs.overlays.unstable-packages
 
+      # Minecraft
+      inputs.prismlauncher.overlays.default
+
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
@@ -59,6 +62,7 @@
     protonup-qt
     protontricks
     winetricks
+    prismlauncher
 
     # Font
     (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
