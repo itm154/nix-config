@@ -66,6 +66,8 @@
 
     # Font
     (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+
+    unstable.vesktop
   ];
 
   # Enable home-manager and git
