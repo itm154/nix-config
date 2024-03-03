@@ -226,7 +226,6 @@
     grimblast
     kitty
     libnotify
-    libsForQt5.print-manager
     loupe
     networkmanagerapplet
     pamixer
@@ -246,7 +245,6 @@
 
     # Unstable packages
     unstable.wezterm
-    unstable.wpsoffice
     unstable.xwaylandvideobridge
   ];
 
