@@ -208,6 +208,9 @@
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # System packages
   environment.systemPackages = with pkgs; [
     alsa-utils

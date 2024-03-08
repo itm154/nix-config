@@ -47,7 +47,7 @@
     })
   ];
 
-  # This generates the required kvantim config file to set the current qt theme
+  # This generates the required kvantum config file to set the current qt theme
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
       General.theme = "Catppuccin-Mocha-Rosewater";
