@@ -201,7 +201,8 @@ in {
       master = {new_is_master = true;};
 
       # Rules
-      windowrule = ["float, Rofi" "tile, kitty" "tile, wezterm" "tile, spotify"];
+      windowrule = ["float, Rofi" "tile, kitty" "tile, wezterm" "tile, spotify" "stayfocused, class:(steam), title:(^$)"];
+      windowrulev2 = ["stayfocused, class:(steam), title:(^$)"];
 
       # Miscellanious
       misc = {

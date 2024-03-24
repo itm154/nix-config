@@ -59,6 +59,7 @@
 
     # Gaming
     steam
+    gamescope
     protonup-qt
     protontricks
     winetricks
