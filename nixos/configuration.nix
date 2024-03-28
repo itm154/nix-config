@@ -111,8 +111,10 @@
     displayManager.sddm.enable = true;
     displayManager.sddm.theme = "rose-pine";
     libinput.enable = true;
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      variant = "";
+      layout = "us";
+    };
   };
 
   # Audio
@@ -300,5 +302,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }
