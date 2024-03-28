@@ -52,7 +52,7 @@ in {
       bind =
         [
           # Applications
-          "$mainMod, Return, exec, wezterm"
+          "$mainMod, Return, exec, kitty"
           "$mainMod, B, exec, firefox"
 
           # Scripts
