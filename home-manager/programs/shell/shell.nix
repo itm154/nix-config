@@ -29,7 +29,7 @@
       dl = "cd ~/Downloads/";
       docs = "cd ~/Documents/";
 
-      # Colorscheme made it hard to read the texts
+      # The terminal colorscheme makes it hard to read, this launches alsamixer with it's stock colours
       mixer = "alsamixer --no-color";
 
       # Better ls
@@ -37,8 +37,6 @@
       la = "eza -a --color=always --group-directories-first";
       ll = "eza -l --color=always --group-directories-first";
       lt = "eza -aT --color=always --group-directories-first";
-
-      cd = "z";
     };
   };
 
@@ -63,5 +61,6 @@
   programs.zoxide = {
     enable = true;
     enableFishIntegration = true;
+    options = [ "--cmd cd" ];
   };
 }
