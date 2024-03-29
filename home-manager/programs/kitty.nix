@@ -25,7 +25,7 @@
     keybindings = {
       "kitty_mod+k" = "next_tab";
       "kitty_mod+j" = "previous_tab";
-      "kitty_mod+t" = "new_tab";
+      "kitty_mod+t" = "launch --type=tab --cwd=current";
       "kitty_mod+q" = "close_tab";
       "cmd+w" = "close_tab";
     };
