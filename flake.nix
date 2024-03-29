@@ -13,7 +13,6 @@
 
     # Other inputs
     rust-overlay.url = "github:oxalica/rust-overlay";
-    spicetify-nix.url = "github:the-argus/spicetify-nix";
 
     # DIY Inputs
     prismlauncher.url = "github:itm154/PrismLauncher";
