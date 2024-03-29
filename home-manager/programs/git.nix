@@ -22,7 +22,7 @@
     settings = {
       gui = {
         showIcons = true;
-        showBottomLine = true;
+        showBottomLine = false;
         theme = {
           lightTheme = false;
           activeBorderColor = ["#a6e3a1" "bold"];
