@@ -3,9 +3,10 @@
   pkgs,
   ...
 }: {
-  # Prefer dark mode
+  # Prefer dark mode and show all window decoration buttons
   dconf.settings = {
     "org/gnome/desktop/interface" = {color-scheme = "prefer-dark";};
+    "org/gnome/desktop/wm/preferences".button-layout = "appmenu:minimize,maximize,close";
   };
 
   # Cursor settings
@@ -24,13 +25,23 @@
       name = "Cantarell";
       size = 11;
     };
-    theme.package = pkgs.adw-gtk3;
-    theme.name = "adw-gtk3-dark";
+    theme = {
+      name = "Catppuccin-Mocha-Standard-Rosewater-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = ["rosewater"];
+        variant = "mocha";
+      };
+    };
     iconTheme.name = "Papirus-Dark";
     iconTheme.package = pkgs.catppuccin-papirus-folders.override {
       flavor = "mocha";
       accent = "red";
     };
+  };
+
+  # Applies gtk theme
+  home.sessionVariables = {
+    GTK_THEME="Catppuccin-Mocha-Standard-Rosewater-Dark:dark";
   };
 
   # QT
@@ -47,12 +58,14 @@
     })
   ];
 
-  # This generates the required kvantum config file to set the current qt theme
   xdg.configFile = {
-    "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-      General.theme = "Catppuccin-Mocha-Rosewater";
-    };
-
+    # Links Kvantum configuration file
+    "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {General.theme = "Catppuccin-Mocha-Rosewater";};
     "Kvantum/Catppuccin-Mocha-Rosewater".source = "${pkgs.catppuccin-kvantum}/share/Kvantum/Catppuccin-Mocha-Rosewater";
+
+    # Links gtk theme files
+    "gtk-4.0/assets".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+    "gtk-4.0/gtk.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+    "gtk-4.0/gtk-dark.css".source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
   };
 }
