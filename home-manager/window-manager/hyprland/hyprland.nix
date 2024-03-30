@@ -135,9 +135,7 @@ in {
       general = {
         gaps_in = 4;
         gaps_out = 12;
-        border_size = 2;
-        "col.active_border" = "0xff1e1e2e";
-        "col.inactive_border" = "0xff1e1e2e";
+        border_size = 0;
         layout = "dwindle";
       };
 
