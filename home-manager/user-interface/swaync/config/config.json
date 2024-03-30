@@ -2,12 +2,16 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "layer": "top",
-  "cssPriority": "user",
+  "layer": "overlay",
+  "control-center-layer": "top",
+  "layer-shell": true,
+  "cssPriority": "application",
   "control-center-margin-top": 12,
   "control-center-margin-bottom": 12,
   "control-center-margin-right": 12,
   "control-center-margin-left": 12,
+  "notification-2fa-action": true,
+  "notification-inline-replies": false,
   "notification-icon-size": 64,
   "notification-body-image-height": 100,
   "notification-body-image-width": 200,
@@ -15,6 +19,7 @@
   "timeout-low": 5,
   "timeout-critical": 0,
   "fit-to-screen": true,
+  "relative-timestamps": true,
   "control-center-width": 500,
   "control-center-height": 600,
   "notification-window-width": 500,
@@ -24,35 +29,73 @@
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
+  "scripts": {
+    "example-script": {
+      "exec": "echo 'Do something...'",
+      "urgency": "Normal"
+    }
+  },
+  "notification-visibility": {
+    "example-name": {
+      "state": "muted",
+      "urgency": "Low",
+      "app-name": "Spotify"
+    }
+  },
   "widgets": [
-    "inhibitors",
+    "buttons-grid",
+    "mpris",
     "title",
     "dnd",
     "notifications",
-    "mpris",
-    "volume"
+    "volume",
+    "backlight"
   ],
   "widget-config": {
-    "inhibitors": {
-      "text": "Inhibitors",
-      "button-text": "Clear All",
-      "clear-all-button": true
-    },
-    "title": {
-      "text": "Notifications",
-      "clear-all-button": true,
-      "button-text": "Clear All"
-    },
-    "dnd": {
-      "text": "Do Not Disturb"
-    },
-    "label": {
-      "max-lines": 5,
-      "text": "Label Text"
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰕾",
+          "command": "amixer set Master toggle"
+        },
+        {
+          "label": "󰍬",
+          "command": "amixer set Capture toggle"
+        },
+        {
+          "label": "",
+          "command": "nm-connection-editor"
+        },
+        {
+          "label": "",
+          "command": "blueman-manager"
+        },
+        {
+          "label": "󰏘",
+          "command": "nwg-look"
+        }
+        
+      ]
     },
     "mpris": {
       "image-size": 96,
       "image-radius": 12
+    },
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "󰎟"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "backlight": {
+      "label": "",
+      "device": "intel_backlight",
+      "min": 1
+    },
+    "volume": {
+      "label": "󰕾"
     }
   }
 }
