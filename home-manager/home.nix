@@ -66,7 +66,7 @@
     prismlauncher
 
     # Font
-    (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+    (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "CascadiaCode" "Monaspace" "IBMPlexMono"];})
 
     # Discord
     unstable.vesktop

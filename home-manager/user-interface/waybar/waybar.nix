@@ -51,7 +51,7 @@ in {
 
         /* Global */
         * {
-          font-family: JetBrains Mono Nerd Font;
+          font-family: CaskaydiaCove Nerd Font;
           font-weight: bold;
         }
 
@@ -256,8 +256,8 @@ in {
         "tooltip" = false;
       };
       "clock" = {
-        "format" = "  {:%I:%M %p} ";
-        "format-alt" = "  {:%A 󰇙 %d %B} ";
+        "format" = " {:%I:%M %p} ";
+        "format-alt" = " {:%A 󰇙 %d %B} ";
         "tooltip" = false;
       };
       "tray" = {
