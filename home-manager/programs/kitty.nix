@@ -11,7 +11,7 @@
     };
     theme = "Catppuccin-Mocha";
     font = {
-      name = "CaskaydiaCove Nerd Font";
+      name = "MonaspiceNe Nerd Font Mono";
       size = 16;
     };
     settings = {
