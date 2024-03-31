@@ -12,7 +12,7 @@
 
 * {
   transition: 200ms;
-  font-family: MonaspiceNe Nerd Font Mono;
+  font-family: MonaspiceNe Nerd Font;
   font-size: 16px;
 }
 
@@ -305,7 +305,7 @@
 /* Title widget */
 .widget-title {
   color: @text-color;
-  margin: 8px 16px 4px 12px;
+  margin: 8px 12px 4px 16px;
   font-size: 1.5rem;
 }
 
@@ -326,7 +326,7 @@
 /* DND widget */
 .widget-dnd {
   color: @text-color;
-  margin: 4px 16px 8px 12px;
+  margin: 4px 12px 8px 16px;
   font-size: 1.1rem;
 }
 
@@ -408,6 +408,7 @@
 
 /* Buttons widget */
 .widget-buttons-grid {
+  font-size: 20px;
   padding: 8px;
   margin: 12px 12px 4px 12px;
   border-radius: 12px;
@@ -416,7 +417,8 @@
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background: @noti-bg;
-  border-radius: 12px;
+  border-radius: 8px;
+  padding: 6px 27px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {

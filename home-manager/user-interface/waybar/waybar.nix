@@ -256,7 +256,7 @@ in {
         "tooltip" = false;
       };
       "clock" = {
-        "format" = "  {:%R} ";
+        "format" = "  {:%R %p} ";
         "format-alt" = "  {:%A 󰇙 %d %B} ";
         "tooltip" = false;
       };

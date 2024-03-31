@@ -11,7 +11,7 @@
     };
     theme = "Catppuccin-Mocha";
     font = {
-      name = "MonaspiceNe Nerd Font Mono";
+      name = "FiraCode Nerd Font Mono";
       size = 16;
     };
     settings = {

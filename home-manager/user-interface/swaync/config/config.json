@@ -55,6 +55,14 @@
     "buttons-grid": {
       "actions": [
         {
+          "label": "󰖩",
+          "command": "nm-connection-editor"
+        },
+        {
+          "label": "󰂯",
+          "command": "blueman-manager"
+        },
+        {
           "label": "󰕾",
           "command": "amixer set Master toggle"
         },
@@ -63,16 +71,8 @@
           "command": "amixer set Capture toggle"
         },
         {
-          "label": "",
-          "command": "nm-connection-editor"
-        },
-        {
-          "label": "",
-          "command": "blueman-manager"
-        },
-        {
-          "label": "󰏘",
-          "command": "nwg-look"
+          "label": "󰐥",
+          "command": "rofi-powermenu"
         }
         
       ]

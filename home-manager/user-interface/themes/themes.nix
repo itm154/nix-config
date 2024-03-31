@@ -41,7 +41,7 @@
 
   # Applies gtk theme
   home.sessionVariables = {
-    GTK_THEME="Catppuccin-Mocha-Standard-Rosewater-Dark:dark";
+    GTK_THEME = "Catppuccin-Mocha-Standard-Rosewater-Dark:dark";
   };
 
   # QT
