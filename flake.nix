@@ -13,6 +13,7 @@
 
     # Other inputs
     rust-overlay.url = "github:oxalica/rust-overlay";
+    nix-colors.url = "github:misterio77/nix-colors";
 
     # DIY Inputs
     prismlauncher.url = "github:itm154/PrismLauncher";
@@ -59,7 +60,7 @@
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
-      asus-nix = nixpkgs.lib.nixosSystem {
+      vivobook-nix = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > NixOs configuration file <
