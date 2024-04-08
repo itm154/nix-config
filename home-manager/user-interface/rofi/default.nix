@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   launcher = pkgs.pkgs.writeShellScriptBin "rofi-launcher" ''
     ${pkgs.rofi-wayland}/bin/rofi -show drun -theme $HOME/.config/rofi/launcher/style.rasi
   '';

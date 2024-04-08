@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   # This script is used for waybar's cava module
   waybar-cava = pkgs.writeShellScriptBin "waybar-cava" ''
     is_cava_ServerExist=`ps -ef|grep -m 1 ${pkgs.cava}/bin/cava | grep -v "grep" | wc -l`
