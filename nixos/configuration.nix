@@ -66,7 +66,8 @@
 
   # Custom modules
   services.gnome-utils.enable = true;
-  services.noisetorch.enable = true;
+  # Currently doesn't work
+  # services.noisetorch.enable = false;
   # =======================================
 
   # ===============Modules=================
