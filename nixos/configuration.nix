@@ -66,6 +66,7 @@
 
   # Custom modules
   services.gnome-utils.enable = true;
+
   # Currently doesn't work
   # services.noisetorch.enable = false;
   # =======================================
@@ -113,6 +114,7 @@
     procps
     rofi-wayland
     rust-bin.stable.latest.default
+    scrcpy
     sddm-rose-pine
     snapshot
     swaynotificationcenter
