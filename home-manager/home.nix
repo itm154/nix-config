@@ -67,7 +67,7 @@
     (pkgs.nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono" "CascadiaCode" "Monaspace" "IBMPlexMono"];})
 
     # Discord
-    unstable.vesktop
+    vesktop
     arrpc
   ];
 
