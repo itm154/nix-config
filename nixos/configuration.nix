@@ -112,6 +112,7 @@
     pavucontrol
     playerctl
     procps
+    ripgrep
     rofi-wayland
     rust-bin.stable.latest.default
     scrcpy
