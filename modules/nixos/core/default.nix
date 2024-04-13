@@ -24,10 +24,12 @@ in {
     security.pam.services = {
       sddm.enableGnomeKeyring = true;
     };
+    services.displayManager.sddm = {
+      enable = true;
+      theme = "rose-pine";
+    };
     services.xserver = {
       enable = true;
-      displayManager.sddm.enable = true;
-      displayManager.sddm.theme = "rose-pine";
       libinput.enable = true;
       xkb = {
         variant = "";
