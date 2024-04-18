@@ -22,6 +22,7 @@
     outputs.nixosModules.core-fonts
     outputs.nixosModules.wayland-core
     outputs.nixosModules.networking
+    outputs.nixosModules.nix-helper
     outputs.nixosModules.noisetorch
 
     ./hardware-configuration.nix
@@ -82,6 +83,10 @@
   software.input-method-editor.enable = true;
   software.core-fonts.enable = true;
   software.wayland-core.enable = true;
+  software.nix-helper = {
+    enable = true;
+    flake-dir = "/home/itm154/Repository/nix-config";
+  };
   software.networking = {
     enable = true;
     hostName = "vivobook-nix";

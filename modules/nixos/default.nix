@@ -12,6 +12,7 @@
   icons-fix = import ./icons-fix;
   input-method-editor = import ./input-method-editor;
   networking = import ./networking;
+  nix-helper = import ./nix-helper;
   noisetorch = import ./noisetorch;
   nvidia = import ./nvidia;
   tablets = import ./tablets;

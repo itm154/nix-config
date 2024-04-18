@@ -72,7 +72,7 @@
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
-      "itm154@asus-nix" = home-manager.lib.homeManagerConfiguration {
+      "itm154@vivobook-nix" = home-manager.lib.homeManagerConfiguration {
         pkgs =
           nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {inherit inputs outputs;};
