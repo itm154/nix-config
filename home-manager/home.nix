@@ -69,6 +69,8 @@
     # Discord
     vesktop
     arrpc
+
+    localsend
   ];
 
   # Enable home-manager and git
