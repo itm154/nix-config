@@ -52,22 +52,27 @@ in {
           "$mainMod, B, exec, firefox"
 
           # Scripts
-          "$shiftMod, S, exec, grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
-          "$shiftMod , A, exec, grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+          "$shiftMod, S, exec, ${pkgs.grimblast}/bin/grimblast --notify copysave area $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
+          "$shiftMod , A, exec, ${pkgs.grimblast}/bin/grimblast --notify copysave screen $HOME/Pictures/Screenshots/$(date +'%Y-%m-%d-%H%M%S_grim.png')"
           "$mainMod, D, exec, rofi-launcher"
           "$mainMod, X, exec, $HOME/.config/rofi/powermenu/powermenu.sh"
 
           # Device controls
-          ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-          ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-          "$mainMod, XF86AudioRaiseVolume, exec, brightnessctl set 5%+"
-          "$mainMod, XF86AudioLowerVolume, exec, brightnessctl set 5%-"
+          ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
+          ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
+          "$mainMod, XF86AudioRaiseVolume, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%+"
+          "$mainMod, XF86AudioLowerVolume, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
 
-          ", XF86AudioRaiseVolume, exec, pamixer -i 5"
-          ", XF86AudioLowerVolume, exec, pamixer -d 5"
-          ", XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
-          ", XF86AudioPlay, exec, playerctl play-pause"
-          "$mainMod, SPACE, exec, playerctl play-pause"
+          # ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+          # ", XF86AudioLowerVolume, exec, pamixer -d 5"
+          # ", XF86AudioMute, exec, pactl set-sink-mute 0 toggle"
+
+          ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"
+          ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+
+          ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
+          "$mainMod, SPACE, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
 
           # General keybindings
           "$mainMod, Q, killactive"
