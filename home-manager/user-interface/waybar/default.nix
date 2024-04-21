@@ -63,7 +63,7 @@ in {
     #clock,
     #cpu,
     #memory,
-    #pulseaudio,
+    #wireplumber,
     #backlight,
     #network,
     #battery,
@@ -149,7 +149,7 @@ in {
           color: @mauve;
         }
 
-    #pulseaudio {
+    #wireplumber {
           color: @peach;
         }
 
@@ -202,7 +202,7 @@ in {
         "cpu"
         "memory"
         "custom/sep"
-        "pulseaudio"
+        "wireplumber"
         "backlight"
         "battery"
         "network"
@@ -269,16 +269,17 @@ in {
         "format" = " {used:0.1f}G";
         "tooltip" = false;
       };
-      "pulseaudio" = {
+      "wireplumber" = {
         "scroll-step" = 5;
         "format" = "{icon} {volume}";
-        "format-bluetooth" = "{icon} {volume}";
+        "format-bluetooth" = "󰂯{icon} {volume}";
         "format-muted" = " ";
-        "format-bluetooth-muted" = " ";
+        "format-bluetooth-muted" = "󰂯 ";
         "format-icons" = {"default" = ["" "" " "];};
-        "on-click-middle" = "${pkgs.alsa-utils}/bin/amixer -D pulse set Master 1+ toggle";
-        "on-scroll-up" = "${pkgs.pamixer}/bin/pamixer -i 5";
-        "on-scroll-down" = "${pkgs.pamixer}/bin/pamixer -d 5";
+        # "on-click-middle" = "${pkgs.pw-volume}/bin/pw-volume mute toggle; pkill -RTMIN+8 waybar";
+        # "on-scroll-up" = "${pkgs.pw-volume}/bin/pw-volume change +5%; pkill -RTMIN+8 waybar";
+        # "on-scroll-down" = "${pkgs.pw-volume}/bin/pw-volume change -5%; pkill -RTMIN+8 waybar";
+        # "max-volume" = 100;
         "tooltip" = false;
       };
       "backlight" = {
