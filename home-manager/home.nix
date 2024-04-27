@@ -45,8 +45,6 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    # Theming
-    gradience
 
     # Use Vesktop flatpak instead
     # See https://github.com/NixOS/nixpkgs/issues/195512
