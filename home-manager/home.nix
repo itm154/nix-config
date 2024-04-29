@@ -45,7 +45,6 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-
     # Use Vesktop flatpak instead
     # See https://github.com/NixOS/nixpkgs/issues/195512
     # (pkgs.discord.override {
@@ -56,9 +55,6 @@
     # Gaming
     steam
     gamescope
-    protonup-qt
-    protontricks
-    winetricks
     prismlauncher
 
     # Font
@@ -69,6 +65,8 @@
     arrpc
 
     localsend
+
+    # cider
   ];
 
   # Enable home-manager and git
