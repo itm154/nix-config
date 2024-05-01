@@ -65,8 +65,9 @@
     arrpc
 
     localsend
+    insomnia
 
-    # cider
+    cider
   ];
 
   # Enable home-manager and git
