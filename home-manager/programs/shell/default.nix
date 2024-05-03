@@ -29,10 +29,10 @@
       mixer = "alsamixer --no-color";
 
       # Better ls
-      ls = "eza -al --color=always --group-directories-first";
-      la = "eza -a --color=always --group-directories-first";
-      ll = "eza -l --color=always --group-directories-first";
-      lt = "eza -aT --color=always --group-directories-first";
+      ls = "${pkgs.eza}/bin/eza -al --color=always --group-directories-first";
+      la = "${pkgs.eza}/bin/eza -a --color=always --group-directories-first";
+      ll = "${pkgs.eza}/bin/eza -l --color=always --group-directories-first";
+      lt = "${pkgs.eza}/bin/eza -aT --color=always --group-directories-first";
     };
   };
 
