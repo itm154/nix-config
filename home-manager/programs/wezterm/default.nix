@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.wezterm = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.wezterm;
     extraConfig = ''
       local wezterm = require("wezterm")
