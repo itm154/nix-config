@@ -34,5 +34,18 @@
       ll = "${pkgs.eza}/bin/eza -l --color=always --group-directories-first";
       lt = "${pkgs.eza}/bin/eza -aT --color=always --group-directories-first";
     };
+
+    functions = {
+      yy = {
+        body = ''
+          set tmp (mktemp -t "yazi-cwd.XXXXXX")
+          yazi $argv --cwd-file="$tmp"
+          if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            cd -- "$cwd"
+          end
+          rm -f -- "$tmp"
+        '';
+      };
+    };
   };
 }
