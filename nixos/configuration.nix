@@ -15,6 +15,7 @@
     # Software modules
     outputs.nixosModules.icons-fix
     outputs.nixosModules.input-method-editor
+    outputs.nixosModules.gdm
     outputs.nixosModules.gnome-utils
     outputs.nixosModules.gnome-apps
     outputs.nixosModules.core
@@ -86,6 +87,7 @@
     enable = true;
     hostName = "vivobook-nix";
   };
+  software.gdm.enable = true;
 
   # Hardware related modules
   hardware.battery-optimizations.enable = true;
@@ -116,7 +118,6 @@
     rofi-wayland
     rust-bin.stable.latest.default
     scrcpy
-    sddm-rose-pine
     snapshot
     swaynotificationcenter
     swww
