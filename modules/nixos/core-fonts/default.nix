@@ -8,7 +8,7 @@ with lib; let
   cfg = config.software.core-fonts;
 in {
   options.software.core-fonts = {
-    enable = mkEnableOption "Basic system fonts";
+    enable = mkEnableOption "Installs core system fonts";
   };
 
   config = mkIf cfg.enable {

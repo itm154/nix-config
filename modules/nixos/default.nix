@@ -7,6 +7,7 @@
   containers = import ./containers;
   core = import ./core;
   core-fonts = import ./core-fonts;
+  gdm = import ./gdm;
   gnome-apps = import ./gnome-apps;
   gnome-utils = import ./gnome-utils;
   icons-fix = import ./icons-fix;
@@ -15,6 +16,7 @@
   nix-helper = import ./nix-helper;
   noisetorch = import ./noisetorch;
   nvidia = import ./nvidia;
+  sddm = import ./sddm;
   tablets = import ./tablets;
   wayland-core = import ./wayland-core;
 }

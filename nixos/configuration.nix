@@ -14,7 +14,6 @@
 
     # Software modules
     outputs.nixosModules.icons-fix
-    outputs.nixosModules.containers
     outputs.nixosModules.input-method-editor
     outputs.nixosModules.gnome-utils
     outputs.nixosModules.gnome-apps
@@ -23,7 +22,6 @@
     outputs.nixosModules.wayland-core
     outputs.nixosModules.networking
     outputs.nixosModules.nix-helper
-    outputs.nixosModules.noisetorch
 
     ./hardware-configuration.nix
   ];
@@ -45,7 +43,7 @@
     itm154 = {
       initialPassword = "1234";
       isNormalUser = true;
-      extraGroups = ["adbusers" "wheel" "networkmanager" "podman"];
+      extraGroups = ["adbusers" "wheel" "networkmanager"];
       shell = pkgs.fish;
     };
   };
@@ -62,14 +60,12 @@
 
   # ===============Services================
   services.flatpak.enable = true;
+
   services.printing.enable = true;
   services.printing.drivers = [pkgs.gutenprint];
 
-  # Custom modules
+  # Custom service modules
   services.gnome-utils.enable = true;
-
-  # Currently doesn't work
-  # services.noisetorch.enable = false;
   # =======================================
 
   # ===============Modules=================
@@ -77,8 +73,7 @@
   hardware.bluetooth.enable = true;
 
   # Software related modules
-  software.containers.enable = false;
-  software.core.enable = true;
+  software.core.enable = true; # IMPORTANT
   software.icons-fix.enable = true;
   software.input-method-editor.enable = true;
   software.core-fonts.enable = true;

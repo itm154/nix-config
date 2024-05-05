@@ -21,13 +21,6 @@ in {
     };
 
     # Display manager
-    security.pam.services = {
-      sddm.enableGnomeKeyring = true;
-    };
-    services.displayManager.sddm = {
-      enable = true;
-      theme = "rose-pine";
-    };
     services.xserver = {
       enable = true;
       libinput.enable = true;
