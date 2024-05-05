@@ -14,6 +14,7 @@
     # Other inputs
     rust-overlay.url = "github:oxalica/rust-overlay";
     nix-colors.url = "github:misterio77/nix-colors";
+    # nix-colors.url = "github:misterio77/nix-colors";
 
     # DIY Inputs
     prismlauncher.url = "github:itm154/PrismLauncher";
