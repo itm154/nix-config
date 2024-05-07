@@ -15,7 +15,7 @@
     # Software modules
     outputs.nixosModules.icons-fix
     outputs.nixosModules.input-method-editor
-    outputs.nixosModules.gdm
+    # outputs.nixosModules.gdm
     outputs.nixosModules.gnome-utils
     outputs.nixosModules.gnome-apps
     outputs.nixosModules.core
@@ -23,6 +23,7 @@
     outputs.nixosModules.wayland-core
     outputs.nixosModules.networking
     outputs.nixosModules.nix-helper
+    outputs.nixosModules.sddm
 
     ./hardware-configuration.nix
   ];
@@ -87,7 +88,8 @@
     enable = true;
     hostName = "vivobook-nix";
   };
-  software.gdm.enable = true;
+  software.sddm.enable = true;
+  # software.gdm.enable = false;
 
   # Hardware related modules
   hardware.battery-optimizations.enable = true;
