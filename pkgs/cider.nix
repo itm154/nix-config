@@ -5,7 +5,7 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "cider";
-  version = "2.3.2";
+  version = "2.4.0";
   name = "${pname}-${version}";
 
   src = /home/itm154/Repository/nix-bins/Cider-${version}.AppImage;
