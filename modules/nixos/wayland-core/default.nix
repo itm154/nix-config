@@ -15,7 +15,17 @@ in {
     environment.sessionVariables = {WLR_NO_HARDWARE_CURSORS = "1";};
 
     # Enable gtk portal for consistency
-    xdg.portal.enable = true;
-    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    xdg.portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config = {
+        common.default = ["gtk"];
+        hyprland.default = [
+          "gtk"
+          "hyprland"
+        ];
+      };
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    };
   };
 }
