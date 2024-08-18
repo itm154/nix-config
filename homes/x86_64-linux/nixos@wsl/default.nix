@@ -23,5 +23,10 @@
     aliasLs = true;
   };
 
+  cli.starship = {
+    enable = true;
+    fishIntegration = true;
+  };
+
   cli.lazygit.enable = true;
 }
