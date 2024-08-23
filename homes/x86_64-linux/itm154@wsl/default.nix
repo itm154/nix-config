@@ -5,12 +5,12 @@
 }: {
   cli = {
     git = {
+      useGithubCli = true;
       enable = true;
       username = "itm154";
+
       email = "ashrulfahmi@gmail.com";
     };
-
-    gh.enable = true;
 
     zoxide = {
       enable = true;

@@ -11,6 +11,7 @@ with lib.custom; let
 in {
   options.cli.git = with types; {
     enable = mkBoolOpt false "Enable git";
+    useGithubCli = mkBoolOpt false "Enable github cli for authentication";
     username = mkOpt types.str null "Username";
     email = mkOpt types.str null "Email";
   };
@@ -22,6 +23,9 @@ in {
 
       userName = cfg.username;
       userEmail = cfg.email;
+    };
+    programs.gh = mkIf cfg.useGithubCli {
+      enable = true;
     };
   };
 }
