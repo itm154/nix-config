@@ -17,6 +17,7 @@
 
     # My own flakes
     neovim.url = "github:itm154/nixvim";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs = inputs: let
