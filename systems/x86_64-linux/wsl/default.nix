@@ -12,7 +12,7 @@
   ];
 
   wsl.enable = true;
-  wsl.defaultUser = "nixos";
+  wsl.defaultUser = "itm154";
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
