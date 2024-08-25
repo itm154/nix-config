@@ -43,8 +43,9 @@
         formatter = channels.nixpkgs.alejandra;
       };
 
-      systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
-      ];
+      # NOTE: This is now declared in ./modules/nixos/home/default.nix
+      # systems.modules.nixos = with inputs; [
+      #   home-manager.nixosModules.home-manager
+      # ];
     };
 }
