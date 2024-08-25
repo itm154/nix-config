@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.desktop.sddm;
+  cfg = config.desktop.addons.sddm;
 in {
-  options.desktop.sddm = with types; {
+  options.desktop.addons.sddm = with types; {
     enable = mkBoolOpt false "Enable sddm";
   };
 

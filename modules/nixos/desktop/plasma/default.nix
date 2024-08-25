@@ -13,11 +13,8 @@ in {
     enable = mkBoolOpt false "Enable KDE Plasma 6";
     x11 = mkBoolOpt false "Enable X11 session for Plasma";
     # INFO: See https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/desktop-managers/plasma6.nix#L136-L149
-    excludePackages = mkOpt (listOf package) [
-      plasma-browser-integration
-      konsole
-      elisa
-    ] "Excluded Plasma packages";
+    excludePackages =
+      mkOpt (listOf package) [] "Excluded Plasma packages";
   };
 
   config = mkIf cfg.enable {
