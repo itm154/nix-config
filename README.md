@@ -27,9 +27,9 @@
 │   │   │   ├── neovim
 │   │   │   ├── nixHelper
 │   │   │   ├── starship
-│   │   │   ├── yazi
 │   │   │   └── zoxide
-│   │   └── home
+│   │   ├── home
+│   │   └── user
 │   └── nixos
 │       ├── desktop
 │       │   ├── addons
@@ -40,6 +40,7 @@
 │       │   ├── batteryOptimization
 │       │   ├── drawingTablet
 │       │   └── nvidia
+│       ├── home
 │       └── system
 │           ├── flatpak
 │           ├── fonts
