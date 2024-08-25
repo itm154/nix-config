@@ -17,7 +17,7 @@ in {
     programs.btop = {
       enable = true;
       settings = {
-        color_theme = "/home/${config.home.username}/.config/btop/themes/catppuccin_mocha.theme";
+        color_theme = "/home/${config.snowfallorg.user.name}/.config/btop/themes/catppuccin_mocha.theme";
         theme_background = false;
         vim_keys = true;
       };
