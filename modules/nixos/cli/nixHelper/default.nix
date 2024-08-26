@@ -11,14 +11,14 @@ with lib.custom; let
 in {
   options.cli.nixHelper = with types; {
     enable = mkBoolOpt false "Enable nix-helper";
-    flakeDir = mkOpt types.str null "Flake-directory";
+    flakeDir = mkOpt types.str "/home/${config.snowfallorg.user.name}/Repository/nix-config" "Flake-directory";
   };
 
   config = mkIf cfg.enable {
-    home.sessionVariables = {
+    environment.sessionVariables = {
       FLAKE = "${cfg.flakeDir}";
     };
 
-    home.packages = with pkgs; [nh];
+    environment.systemPackages = [pkgs.nh];
   };
 }
