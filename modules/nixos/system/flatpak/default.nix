@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.system.flatpak;
 in {
   options.system.flatpak = with types; {
-    enable = mkBoolOpt true "Enable flatpak";
+    enable = mkBoolOpt false "Enable flatpak";
     fixIcons = mkBoolOpt false "Fix issues with fonts and icon not appearing in flatpak apps";
   };
 

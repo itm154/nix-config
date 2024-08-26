@@ -32,6 +32,7 @@
     lazygit.enable = true;
     yazi.enable = true;
     btop.enable = true;
+    bat.enable = true;
 
     neovim.enable = true;
   };
