@@ -21,33 +21,49 @@
 │   │   ├── cli
 │   │   │   ├── bat
 │   │   │   ├── btop
+│   │   │   ├── cava
 │   │   │   ├── fish
 │   │   │   ├── git
 │   │   │   ├── lazygit
 │   │   │   ├── neovim
-│   │   │   ├── nixHelper
 │   │   │   ├── starship
+│   │   │   ├── yazi
 │   │   │   └── zoxide
 │   │   ├── home
 │   │   └── user
 │   └── nixos
+│       ├── cli
+│       │   └── nixHelper
 │       ├── desktop
 │       │   ├── addons
-│       │   │   └── sddm
+│       │   │   ├── gdm
+│       │   │   ├── sddm
+│       │   │   └── xdgPortal
 │       │   └── plasma
 │       ├── hardware
 │       │   ├── audio
 │       │   ├── batteryOptimization
 │       │   ├── drawingTablet
+│       │   ├── networking
 │       │   └── nvidia
 │       ├── home
-│       └── system
-│           ├── flatpak
-│           ├── fonts
-│           ├── locales
-│           └── noisetorch
+│       ├── services
+│       │   ├── ime
+│       │   └── powerButton
+│       ├── system
+│       │   ├── boot
+│       │   ├── flatpak
+│       │   ├── fonts
+│       │   ├── libinput
+│       │   ├── locales
+│       │   ├── noisetorch
+│       │   └── xkb
+│       ├── user
+│       └── virtualization
+│           └── kvm
 ├── packages
 │   └── sddmRosePine
+├── README.md
 ├── systems
 │   └── x86_64-linux
 │       └── wsl
