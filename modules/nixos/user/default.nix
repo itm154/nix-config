@@ -48,7 +48,5 @@ in {
           ++ cfg.extraGroups;
       }
       // cfg.extraOptions;
-
-    users.mutableUsers = false;
   };
 }
