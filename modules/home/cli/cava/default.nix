@@ -11,7 +11,6 @@ with lib.custom; let
 in {
   options.cli.cava = with types; {
     enable = mkBoolOpt false "Enable cava";
-    barIntegration = mkBoolOpt false "Enable configuration for use in bars";
   };
 
   config = mkIf cfg.enable {
@@ -20,9 +19,6 @@ in {
     xdg.configFile."cava/config".source = ./config/config;
     xdg.configFile."cava/mocha.cava" .source = ./config/mocha.cava;
 
-    xdg.configFile."cava/barIntegrationConfig".source =
-      if cfg.barIntegration
-      then ./config/barIntegrationConfig
-      else null;
+    xdg.configFile."cava/barIntegrationConfig".source = ./config/barIntegrationConfig;
   };
 }
