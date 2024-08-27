@@ -33,10 +33,10 @@ in {
 
       firewall = {
         enable = true;
-        allowedTCPPorts = fwCfg.tcp.allowedPorts;
-        allowedTCPPortRanges = fwCfg.tcp.allowedPortRanges;
-        allowedUDPPorts = fwCfg.udp.allowedPorts;
-        allowedUDPPortRanges = fwCfg.udp.allowedPortRanges;
+        allowedTCPPorts = cfg.firewall.tcp.allowedPorts;
+        allowedTCPPortRanges = cfg.firewall.tcp.allowedPortRanges;
+        allowedUDPPorts = cfg.firewall.udp.allowedPorts;
+        allowedUDPPortRanges = cfg.firewall.udp.allowedPortRanges;
       };
     };
   };
