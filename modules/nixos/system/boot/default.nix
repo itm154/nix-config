@@ -11,7 +11,7 @@ with lib.custom; let
 in {
   options.system.boot = with types; {
     enable = mkBoolOpt false "Enable boot";
-    entries = mkOpt str 5 "Amount of entries available";
+    entries = mkOpt int 5 "Amount of entries available";
   };
 
   config = mkIf cfg.enable {
