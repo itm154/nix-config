@@ -19,13 +19,15 @@ in {
     #   sddm.enableGnomeKeyring = true;
     # };
     services.displayManager.sddm = {
+      package = pkgs.lib.mkForce pkgs.libsForQt5.sddm;
+      extraPackages = pkgs.lib.mkForce [pkgs.libsForQt5.qt5.qtgraphicaleffects];
       enable = true;
       wayland.enable = true;
       theme = "rose-pine";
     };
 
-    environment.systemPackages = with pkgs; [
-      sddmRosePine
+    environment.systemPackages = with pkgs.custom; [
+      sddm-rose-pine
     ];
   };
 }
