@@ -12,15 +12,13 @@ in {
   options.hardware.networking = with types; {
     enable = mkBoolOpt false "Enable networking";
     firewall = {
-      allowedTCPPorts = mkOpt {
-        type = listOf int;
-        default = [];
-        description = "List of allowed TCP ports";
+      tcp = {
+        allowedPorts = mkOpt (listOf port) [] "Allowed TCP ports";
+        allowedPortRanges = mkOpt (listOf (attrsOf port)) [] "Allowed TCP port ranges";
       };
-      allowedUDPPortRanges = mkOpt {
-        type = listOf (attrsOf int);
-        default = [];
-        description = "List of allowed UDP ports";
+      udp = {
+        allowedPorts = mkOpt (listOf port) [] "Allowed UDP ports";
+        allowedPortRanges = mkOpt (listOf (attrsOf port)) [] "Allowed UDP port ranges";
       };
     };
   };
@@ -29,13 +27,16 @@ in {
     networking = {
       networkmanager = {
         enable = true;
+        # NOTE: IWD supposedly works better with intel wifi cards (we'll see)
         wifi.backend = "iwd";
       };
 
       firewall = {
         enable = true;
-        allowedTCPPorts = cfg.firewall.allowedTCPPorts;
-        allowedUDPPortRanges = cfg.firewall.allowedUDPPortRanges;
+        allowedTCPPorts = fwCfg.tcp.allowedPorts;
+        allowedTCPPortRanges = fwCfg.tcp.allowedPortRanges;
+        allowedUDPPorts = fwCfg.udp.allowedPorts;
+        allowedUDPPortRanges = fwCfg.udp.allowedPortRanges;
       };
     };
   };

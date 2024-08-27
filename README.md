@@ -6,7 +6,6 @@
 <summary><code>tree | grep -v 'default.nix'</code></summary>
 <pre>
 <code>
-.
 ├── flake.lock
 ├── flake.nix
 ├── homes
@@ -43,12 +42,14 @@
 │       ├── hardware
 │       │   ├── audio
 │       │   ├── batteryOptimization
+│       │   ├── bluetooth
 │       │   ├── drawingTablet
 │       │   ├── networking
 │       │   └── nvidia
 │       ├── home
 │       ├── services
 │       │   ├── ime
+│       │   ├── podman
 │       │   └── powerButton
 │       ├── system
 │       │   ├── boot
@@ -57,12 +58,15 @@
 │       │   ├── libinput
 │       │   ├── locales
 │       │   ├── noisetorch
+│       │   ├── security
+│       │   │   ├── doas
+│       │   │   └── sudo
 │       │   └── xkb
 │       ├── user
 │       └── virtualization
 │           └── kvm
 ├── packages
-│   └── sddmRosePine
+│   └── sddm-rose-pine
 ├── README.md
 ├── systems
 │   └── x86_64-linux
