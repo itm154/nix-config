@@ -19,8 +19,12 @@ in {
 
   config = mkIf cfg.enable {
     services.xserver = mkIf cfg.x11 {enable = true;};
-    desktop.addons.sddm.enable = true;
+    desktop.addons = {
+      sddm.enable = true;
+      xdgPortal.enable = true;
+    };
     services.desktopManager.plasma6.enable = true;
+
     environment.plasma6.excludePackages = with pkgs.kdePackages;
       []
       ++ cfg.excludePackages;

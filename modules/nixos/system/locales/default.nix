@@ -10,19 +10,23 @@ with lib.custom; let
   cfg = config.system.locales;
 in {
   options.system.locales = with types; {
-    enable = mkBoolOpt false "Enable locales";
+    enable = mkBoolOpt true "Enable locales";
+    timeZone = mkOpt str "Asia/Kuching" "Timezone";
     cjkSupport = mkBoolOpt true "Enable CJK region language and locales";
+    extraLocales = mkOpt (listOf str) [] "Extra locales";
   };
 
   config = mkIf cfg.enable {
-    # Locales and input
-    time.timeZone = "Asia/Kuching";
+    time.timeZone = cfg.timeZone;
     i18n = {
+      # NOTE: Just using US locales because it just works
       defaultLocale = "en_US.UTF-8";
-      supportedLocales = [
-        "en_US.UTF-8/UTF-8"
-        (mkIf cfg.cjkSupport "ja_JP.UTF-8/UTF-8")
-      ];
+      supportedLocales =
+        [
+          "en_US.UTF-8/UTF-8"
+          (mkIf cfg.cjkSupport "ja_JP.UTF-8/UTF-8")
+        ]
+        ++ cfg.extraLocales;
       extraLocaleSettings = {
         LC_ADDRESS = "en_US.UTF-8";
         LC_IDENTIFICATION = "en_US.UTF-8";

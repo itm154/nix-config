@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.system.libinput;
 in {
   options.system.libinput = with types; {
-    enable = mkBoolOpt true "Enable system.libinput";
+    enable = mkBoolOpt true "Enable libinput";
   };
 
   config = mkIf cfg.enable {

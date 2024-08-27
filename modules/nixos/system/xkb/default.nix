@@ -10,7 +10,8 @@ with lib.custom; let
   cfg = config.system.xkb;
 in {
   options.system.xkb = with types; {
-    enable = mkBoolOpt false "Enable system.xkb";
+    enable = mkBoolOpt true "Enable xkb";
+    layout = mkOpt str "us" "Keyboard layout";
   };
 
   config = mkIf cfg.enable {
@@ -18,7 +19,7 @@ in {
       enable = true;
       xkb = {
         variant = "";
-        layout = "us";
+        layout = cfg.layout;
       };
     };
   };
