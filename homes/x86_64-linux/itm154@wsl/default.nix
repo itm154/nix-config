@@ -33,6 +33,7 @@
     yazi.enable = true;
     btop.enable = true;
     bat.enable = true;
+    cava.enable = true;
 
     neovim.enable = true;
   };

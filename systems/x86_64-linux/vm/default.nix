@@ -10,15 +10,13 @@
     x11 = true;
   };
 
-  desktop.addons.xdgPortal.enable = true;
-
   hardware = {
     audio.enable = true;
     networking.enable = true;
   };
 
   system = {
-    boot = {
+    secureBoot = {
       enable = true;
     };
 
@@ -30,9 +28,9 @@
     };
   };
 
-  system.stateVersion = "24.05";
-
   environment.systemPackages = with pkgs; [
     firefox
   ];
+
+  system.stateVersion = "24.05";
 }
