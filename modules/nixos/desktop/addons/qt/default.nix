@@ -17,7 +17,7 @@ in {
     home.extraOptions = {
       qt = {
         enable = true;
-        platformTheme = "kvantum";
+        platformTheme.name = "qtct";
         style = {
           name = "kvantum";
           catppuccin.enable = true;

@@ -10,6 +10,8 @@
     x11 = true;
   };
 
+  desktop.hyprland.enable = true;
+
   hardware = {
     audio.enable = true;
     networking.enable = true;
