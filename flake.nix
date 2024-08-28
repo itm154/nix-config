@@ -18,6 +18,7 @@
     # My own flakes
     neovim.url = "github:itm154/nixvim";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
   };
 
   outputs = inputs: let
