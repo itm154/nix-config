@@ -15,10 +15,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # My own flakes
+    ## My own flakes ##
     neovim.url = "github:itm154/nixvim";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
+    # Secure boot module
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = inputs: let
@@ -43,10 +47,5 @@
       outputs-builder = channels: {
         formatter = channels.nixpkgs.alejandra;
       };
-
-      # NOTE: This is now declared in ./modules/nixos/home/default.nix
-      # systems.modules.nixos = with inputs; [
-      #   home-manager.nixosModules.home-manager
-      # ];
     };
 }

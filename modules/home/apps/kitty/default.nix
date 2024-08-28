@@ -16,11 +16,11 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
+      catppuccin.enable = true;
       shellIntegration = {
         enableFishIntegration = true;
         enableBashIntegration = true;
       };
-      theme = "Catppuccin-Mocha";
       font = {
         name = "FiraCode Nerd Font Mono";
         size = 16;

@@ -16,6 +16,7 @@ in {
   config = mkIf cfg.enable {
     programs.yazi = {
       enable = true;
+      catppuccin.enable = true;
       enableFishIntegration = true;
       settings = {
         manager = {
@@ -23,10 +24,6 @@ in {
           sort_dir_first = true;
         };
       };
-    };
-
-    home.file.".config/yazi/theme.toml" = {
-      source = ./theme.toml;
     };
   };
 }
