@@ -14,25 +14,28 @@ in {
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  # Things required for my laptop to work properly
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
   boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc"];
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel" "facer" "wmi" "sparse-keymap" "video"];
   boot.extraModulePackages = [acermodule];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/6b71335e-b100-49d5-a0e0-0a3dd5d861d0";
+    device = "/dev/disk/by-uuid/9bdb9b9d-cf93-41f2-85d3-3a6f3d30d48e";
     fsType = "btrfs";
     options = ["subvol=@"];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1922-DBBC";
+    device = "/dev/disk/by-uuid/B31F-388F";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/a5cae236-78f8-4556-b79a-ff864503d786";}
+    {device = "/dev/disk/by-uuid/65f8363e-5f07-4699-be22-1ebf71314f48";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -44,5 +47,10 @@ in {
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  # Actual Hardware config
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.firmware = with pkgs; [
+    sof-firmware
+  ];
 }
