@@ -7,17 +7,15 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.hardware.batteryOptimizaation;
+  cfg = config.hardware.batteryOptimization;
 in {
-  options.hardware.batteryOptimizaation = with types; {
+  options.hardware.batteryOptimization = with types; {
     enable = mkBoolOpt false "Enable battery optimization for laptops";
   };
 
   config = mkIf cfg.enable {
-    # Better scheduling for CPU cycles - thanks System76!!!
-    services.system76-scheduler.settings.cfsProfiles.enable = true;
-
-    # Enable TLP (better than gnomes internal power manager)
+    services.power-profiles-daemon.enable = false; # Disable power-profiles-daemon (conflicts with TLP)
+    services.thermald.enable = true;
     services.tlp = {
       enable = true;
       settings = {
@@ -25,16 +23,50 @@ in {
         CPU_BOOST_ON_BAT = 0;
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        USB_AUTOSUSPEND = 1;
+        RUNTIME_PM_ON_AC = "auto";
       };
     };
 
-    # Disable GNOMEs power management
-    services.power-profiles-daemon.enable = false;
+    services.system76-scheduler = {
+      enable = true;
+      useStockConfig = false; # our needs are modest
+      settings = {
+        cfsProfiles.default.preempt = "full";
+        processScheduler = {
+          pipewireBoost.enable = false;
+          foregroundBoost.enable = false;
+        };
+      };
+      assignments = {
+        batch = {
+          class = "batch";
+          matchers = [
+            "bazel"
+            "clangd"
+            "rust-analyzer"
+          ];
+        };
+      };
+      # do not disturb adults:
+      exceptions = [
+        "include descends=\"schedtool\""
+        "include descends=\"nice\""
+        "include descends=\"chrt\""
+        "include descends=\"taskset\""
+        "include descends=\"ionice\""
 
-    # Enable powertop
-    powerManagement.powertop.enable = true;
+        "schedtool"
+        "nice"
+        "chrt"
+        "ionice"
 
-    # Enable thermald (only necessary if on Intel CPUs)
-    services.thermald.enable = true;
+        "dbus"
+        "dbus-broker"
+        "rtkit-daemon"
+        "taskset"
+        "systemd"
+      ];
+    };
   };
 }

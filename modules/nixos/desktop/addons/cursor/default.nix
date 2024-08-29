@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.desktop.addons.cursor;
 in {
   options.desktop.addons.cursor = with types; {
-    enable = mkBoolOpt true "Enable cursor theming";
+    enable = mkBoolOpt false "Enable cursor theming";
   };
 
   config = mkIf cfg.enable {

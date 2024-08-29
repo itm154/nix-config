@@ -1,3 +1,4 @@
+# WARNING: This module will be deprecated because gtk theming sucks, use qt/kde instead
 {
   options,
   config,
@@ -10,7 +11,7 @@ with lib.custom; let
   cfg = config.desktop.addons.gtk;
 in {
   options.desktop.addons.gtk = with types; {
-    enable = mkBoolOpt true "Enable gtk theming";
+    enable = mkBoolOpt false "Enable gtk theming";
   };
 
   config = mkIf cfg.enable {

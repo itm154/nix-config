@@ -11,6 +11,8 @@ with lib.custom; let
 in {
   options.hardware.nvidia = with types; {
     enable = mkBoolOpt false "Enable NVIDIA drivers";
+    intelBusId = mkOpt str "" "Intel Bus ID";
+    nvidiaBusId = mkOpt str "" "NVidia Bus ID";
     open-gpu-kernel-modules = mkBoolOpt false "Enable open gpu kernel modules";
   };
 
@@ -27,6 +29,16 @@ in {
       powerManagement = {
         enable = true;
         finegrained = true;
+      };
+
+      prime = {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+
+        intelBusId = cfg.intelBusId;
+        nvidiaBusId = cfg.nvidiaBusId;
       };
 
       open = cfg.open-gpu-kernel-modules;

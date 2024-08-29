@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.desktop.addons.qt;
 in {
   options.desktop.addons.qt = with types; {
-    enable = mkBoolOpt true "Enable qt theming";
+    enable = mkBoolOpt false "Enable qt theming";
   };
 
   config = mkIf cfg.enable {

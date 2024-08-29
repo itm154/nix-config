@@ -14,9 +14,6 @@ in {
     initialPassword =
       mkOpt str "password"
       "The initial password to use when the user is first created.";
-    icon =
-      mkOpt (nullOr package) defaultIcon
-      "The profile picture to use for the user.";
     extraGroups = mkOpt (listOf str) [] "Groups for the user to be assigned.";
     extraOptions =
       mkOpt attrs {}

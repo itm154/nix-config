@@ -13,12 +13,12 @@ in {
     enable = mkBoolOpt false "Enable module";
     aliasLs = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Enable eza aliased to ls";
     };
     aliasCommonDir = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
       description = "Enable aliases to common directory";
     };
   };
