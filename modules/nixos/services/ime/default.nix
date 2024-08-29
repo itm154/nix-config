@@ -21,6 +21,10 @@ in {
     };
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
+    home.extraOptions = {
+      i18n.inputMethod.fcitx5.catppuccin.enable = true;
+    };
+
     environment.sessionVariables = {
       GTK_IM_MODULE = "fcitx";
       QT_IM_MODULE = "fcitx";

@@ -73,24 +73,22 @@ in {
 
     user = {extraGroups = ["qemu-libvirtd" "libvirtd" "disk"];};
 
-    home = {
-      extraOptions = {
-        systemd.user.services.scream = {
-          Unit.Description = "Scream";
-          Unit.After =
-            [
-              "libvirtd.service"
-              "pipewire-pulse.service"
-              "pipewire.service"
-              "sound.target"
-            ]
-            ++ cfg.machineUnits;
-          Service.ExecStart = "${pkgs.scream}/bin/scream -n scream -o pulse -m /dev/shm/scream";
-          Service.Restart = "always";
-          Service.StartLimitIntervalSec = "5";
-          Service.StartLimitBurst = "1";
-          Install.RequiredBy = cfg.machineUnits;
-        };
+    home.extraOptions = {
+      systemd.user.services.scream = {
+        Unit.Description = "Scream";
+        Unit.After =
+          [
+            "libvirtd.service"
+            "pipewire-pulse.service"
+            "pipewire.service"
+            "sound.target"
+          ]
+          ++ cfg.machineUnits;
+        Service.ExecStart = "${pkgs.scream}/bin/scream -n scream -o pulse -m /dev/shm/scream";
+        Service.Restart = "always";
+        Service.StartLimitIntervalSec = "5";
+        Service.StartLimitBurst = "1";
+        Install.RequiredBy = cfg.machineUnits;
       };
     };
   };
