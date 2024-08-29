@@ -17,8 +17,8 @@ in {
 
   config = mkIf cfg.enable {
     programs.starship = {
-      catppuccin.enable = true;
       enable = true;
+      catppuccin.enable = true;
       enableFishIntegration = cfg.fishIntegration;
       enableBashIntegration = cfg.bashIntegration;
     };

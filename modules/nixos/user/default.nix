@@ -32,7 +32,7 @@ in {
         "Downloads/.keep".text = "";
         "Music/.keep".text = "";
         "Images/.keep".text = "";
-        "Repository/.keep" = "";
+        "Repository/.keep".text = "";
       };
     };
 

@@ -29,6 +29,8 @@ in {
     home-manager = {
       useUserPackages = true;
       useGlobalPkgs = true;
+
+      users.${config.user.name} = mkAliasDefinitions options.home.extraOptions;
     };
   };
 }
