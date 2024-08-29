@@ -7,15 +7,17 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}: let
+  acermodule = pkgs.custom.acer-module;
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
   boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.kernelModules = ["kvm-intel" "facer" "wmi" "sparse-keymap" "video"];
+  boot.extraModulePackages = [acermodule];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/6b71335e-b100-49d5-a0e0-0a3dd5d861d0";

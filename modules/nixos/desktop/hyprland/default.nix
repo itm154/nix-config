@@ -15,6 +15,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    programs.hyprland.enable = true;
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
       settings = {

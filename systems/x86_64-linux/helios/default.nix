@@ -34,6 +34,7 @@
   };
 
   system = {
+    flatpak.enable = true;
     secureBoot = {
       enable = true;
       entries = 5;
