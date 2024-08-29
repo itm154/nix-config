@@ -24,5 +24,9 @@ in {
         };
       };
     };
+    environment.sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+      QT_STYLE_OVERRIDE = "kvantum";
+    };
   };
 }
