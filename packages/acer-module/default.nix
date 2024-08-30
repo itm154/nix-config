@@ -3,7 +3,8 @@
   lib,
   fetchFromGitHub,
   linuxPackages,
-  kernel ? linuxPackages.kernel,
+  pkgs,
+  kernel ? pkgs.linuxPackages_zen.kernel,
   kmod,
 }:
 stdenv.mkDerivation rec {
