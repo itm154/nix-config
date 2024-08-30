@@ -8,19 +8,23 @@
   modulesPath,
   ...
 }: let
-  acermodule = pkgs.custom.acer-module;
+  # NOTE: These modules can only be used with the zen kernel because the regular nix kernel does breaks sof-firmware/audio
+  acer-module = pkgs.custom.acer-module;
+  acer-wmi-battery = pkgs.custom.acer-wmi-battery;
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  # Things required for my laptop to work properly
+  # WARNING:Things required for my laptop to work properly, never change this
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc"];
+  # NOTE: Look at the top comment
+  boot.extraModulePackages = [acer-module acer-wmi-battery];
+  boot.kernelModules = ["kvm-intel" "facer" "wmi" "sparse-keymap" "video" "acer-wmi-battery"];
+
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel" "facer" "wmi" "sparse-keymap" "video"];
-  boot.extraModulePackages = [acermodule];
+  boot.initrd.availableKernelModules = ["vmd" "xhci_pci" "thunderbolt" "nvme" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc"];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9bdb9b9d-cf93-41f2-85d3-3a6f3d30d48e";
@@ -51,6 +55,20 @@ in {
   # Actual Hardware config
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   hardware.firmware = with pkgs; [
-    sof-firmware
+    sof-firmware # NOTE: This is just to explicitly declare sof-firmware because it doesn't work sometimes
   ];
+
+  # NOTE: This is hardware config from the custom nixos modules, moved it here because it is more fitting
+  hardware = {
+    audio.enable = true;
+    batteryOptimization.enable = true;
+    bluetooth.enable = true;
+    networking.enable = true;
+    nvidia = {
+      enable = true;
+      open-gpu-kernel-modules = true;
+      intelBusId = "PCI:1:0:0";
+      nvidiaBusId = "PCI:0:2:0";
+    };
+  };
 }

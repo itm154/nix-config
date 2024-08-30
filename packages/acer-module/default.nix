@@ -2,7 +2,6 @@
   stdenv,
   lib,
   fetchFromGitHub,
-  linuxPackages,
   pkgs,
   kernel ? pkgs.linuxPackages_zen.kernel,
   kmod,
