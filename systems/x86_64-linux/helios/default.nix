@@ -39,6 +39,19 @@
     };
   };
 
+  virtualisation.kvm = {
+    enable = true;
+
+    # NOTE: lspci -nn
+    # 0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4050 Max-Q / Mobile] [10de:28e1] (rev a1)
+    # 0000:01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
+    vfioIds = ["10de:28e1" "10de:22be"];
+
+    # NOTE: Use `machinectl` and then `machinectl status <name>` to
+    # get the unit "*.scope" of the virtual machine.
+    machineUnits = [];
+  };
+
   environment.systemPackages = with pkgs; [
     firefox
   ];
