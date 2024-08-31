@@ -42,5 +42,6 @@
   };
 
   home.packages = with pkgs; [
+    custom.cider
   ];
 }
