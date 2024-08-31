@@ -6,10 +6,13 @@
 <summary><code>tree | grep -v 'default.nix'</code></summary>
 <pre>
 <code>
+.
 ├── flake.lock
 ├── flake.nix
 ├── homes
 │   └── x86_64-linux
+│       ├── itm154
+│       ├── itm154@vm
 │       └── itm154@wsl
 ├── lib
 │   └── module
@@ -29,15 +32,20 @@
 │   │   │   ├── yazi
 │   │   │   └── zoxide
 │   │   ├── home
+│   │   ├── theme
 │   │   └── user
 │   └── nixos
 │       ├── cli
 │       │   └── nixHelper
 │       ├── desktop
 │       │   ├── addons
+│       │   │   ├── cursor
 │       │   │   ├── gdm
+│       │   │   ├── gtk
+│       │   │   ├── qt
 │       │   │   ├── sddm
 │       │   │   └── xdgPortal
+│       │   ├── hyprland
 │       │   └── plasma
 │       ├── hardware
 │       │   ├── audio
@@ -58,6 +66,7 @@
 │       │   ├── libinput
 │       │   ├── locales
 │       │   ├── noisetorch
+│       │   ├── secureBoot
 │       │   ├── security
 │       │   │   ├── doas
 │       │   │   └── sudo
@@ -66,10 +75,14 @@
 │       └── virtualization
 │           └── kvm
 ├── packages
+│   ├── acer-module
+│   ├── acer-wmi-battery
 │   └── sddm-rose-pine
 ├── README.md
 ├── systems
 │   └── x86_64-linux
+│       ├── helios
+│       ├── vm
 │       └── wsl
 └── templates
     ├── lib
