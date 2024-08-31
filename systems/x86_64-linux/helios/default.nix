@@ -8,9 +8,12 @@
     ./hardware-configuration.nix
   ];
 
-  desktop.plasma = {
-    enable = true;
-    x11 = true;
+  cli = {
+    fish.enable = true;
+  };
+
+  desktop = {
+    plasma.enable = true;
   };
 
   services = {
