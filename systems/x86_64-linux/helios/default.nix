@@ -49,7 +49,7 @@
 
     # NOTE: Use `machinectl` and then `machinectl status <name>` to
     # get the unit "*.scope" of the virtual machine.
-    machineUnits = [];
+    machineUnits = ["machine-qemu\x2d4\x2dwin11.scope"];
   };
 
   environment.systemPackages = with pkgs; [
