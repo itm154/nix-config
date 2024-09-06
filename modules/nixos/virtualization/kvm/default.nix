@@ -71,7 +71,6 @@ in {
           ovmf.enable = true;
           ovmf.packages = [
             (pkgs.OVMFFull.override {
-              # I have to build UEFI firmware from source, fun times
               secureBoot = true; # Win 11 needs secure boot
               tpmSupport = true; # Win 11 needs TPM
             })
@@ -86,16 +85,15 @@ in {
       };
     };
 
-    # NOTE: This is probably a workaround when virt-manager doesnt see a secure boot ovmf bios
-    # environment.etc = {
-    #   "ovmf/edk2-x86_64-secure-code.fd" = {
-    #     source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
-    #   };
-    #
-    #   "ovmf/edk2-i386-vars.fd" = {
-    #     source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";
-    #   };
-    # };
+    environment.etc = {
+      "ovmf/edk2-x86_64-secure-code.fd" = {
+        source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
+      };
+
+      "ovmf/edk2-i386-vars.fd" = {
+        source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";
+      };
+    };
 
     user = {extraGroups = ["qemu-libvirtd" "libvirtd" "disk"];};
 

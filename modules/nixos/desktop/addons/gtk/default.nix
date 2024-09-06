@@ -21,7 +21,7 @@ in {
         catppuccin = {
           enable = true;
           icon.enable = true;
-          icon.accent = "red";
+          icon.accent = "maroon";
         };
         font = {
           package = pkgs.cantarell-fonts;

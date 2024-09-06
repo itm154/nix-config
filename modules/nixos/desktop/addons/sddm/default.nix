@@ -10,14 +10,14 @@ with lib.custom; let
   cfg = config.desktop.addons.sddm;
 in {
   options.desktop.addons.sddm = with types; {
-    enable = mkBoolOpt false "Enable sddm";
+    enable = mkBoolOpt true "Enable sddm";
   };
 
   config = mkIf cfg.enable {
-    # TODO: Make this optional/a module
-    # security.pam.services = {
-    #   sddm.enableGnomeKeyring = true;
-    # };
+    security.pam.services = {
+      sddm.kwallet.enable = true;
+    };
+
     services.displayManager.sddm = {
       package = pkgs.lib.mkForce pkgs.libsForQt5.sddm;
       extraPackages = pkgs.lib.mkForce [pkgs.libsForQt5.qt5.qtgraphicaleffects];

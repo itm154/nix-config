@@ -45,7 +45,6 @@
 │       │   │   ├── qt
 │       │   │   ├── sddm
 │       │   │   └── xdgPortal
-│       │   ├── hyprland
 │       │   └── plasma
 │       ├── hardware
 │       │   ├── audio

@@ -25,7 +25,10 @@
   };
 
   system = {
-    flatpak.enable = true;
+    flatpak = {
+      enable = true;
+      fixIcons = true;
+    };
     secureBoot = {
       enable = true;
       entries = 5;
@@ -39,6 +42,7 @@
     };
   };
 
+  # GPU Passthrough works but looking glass likes to complain about host application not running, so its basically unusable for gaming
   virtualisation.kvm = {
     enable = true;
 
