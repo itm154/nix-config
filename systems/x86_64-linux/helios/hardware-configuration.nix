@@ -63,6 +63,7 @@ in {
     audio.enable = true;
     batteryOptimization.enable = true;
     bluetooth.enable = true;
+    drawingTablet.enable = true;
     networking.enable = true;
     nvidia = {
       enable = true;

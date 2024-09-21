@@ -19,6 +19,7 @@ in {
   config = mkIf cfg.enable {
     hardware.opengl = {
       enable = true;
+      extraPackages = [pkgs.nvidia-vaapi-driver];
     };
 
     services.xserver.videoDrivers = ["nvidia"];

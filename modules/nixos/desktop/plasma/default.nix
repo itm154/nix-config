@@ -15,6 +15,7 @@ in {
     # INFO: See https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/desktop-managers/plasma6.nix#L136-L149
     excludePackages =
       mkOpt (listOf package) [] "Excluded Plasma packages";
+    extraPackages = mkOpt (listOf package) [] "Extra plasma packages";
   };
 
   config = mkIf cfg.enable {
@@ -27,5 +28,7 @@ in {
     environment.plasma6.excludePackages = with pkgs.kdePackages;
       []
       ++ cfg.excludePackages;
+
+    environment.systemPackages = with pkgs; [] ++ cfg.extraPackages;
   };
 }

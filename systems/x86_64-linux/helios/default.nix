@@ -8,12 +8,19 @@
     ./hardware-configuration.nix
   ];
 
+  apps = {
+    steam.enable = true;
+  };
+
   cli = {
     fish.enable = true;
   };
 
   desktop = {
-    plasma.enable = true;
+    plasma = {
+      enable = true;
+      extraPackages = [pkgs.custom.klassy];
+    };
   };
 
   services = {
@@ -43,18 +50,19 @@
   };
 
   # GPU Passthrough works but looking glass likes to complain about host application not running, so its basically unusable for gaming
-  virtualisation.kvm = {
-    enable = true;
-
-    # NOTE: lspci -nn
-    # 0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4050 Max-Q / Mobile] [10de:28e1] (rev a1)
-    # 0000:01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
-    vfioIds = ["10de:28e1" "10de:22be"];
-
-    # NOTE: Use `machinectl` and then `machinectl status <name>` to
-    # get the unit "*.scope" of the virtual machine.
-    machineUnits = ["machine-qemu\x2d4\x2dwin11.scope"];
-  };
+  # Note that gpu gaming might not work because gpu drivers are effed up
+  # virtualisation.kvm = {
+  #   enable = true;
+  #
+  #   # NOTE: lspci -nn
+  #   # 0000:01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4050 Max-Q / Mobile] [10de:28e1] (rev a1)
+  #   # 0000:01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22be] (rev a1)
+  #   vfioIds = ["10de:28e1" "10de:22be"];
+  #
+  #   # NOTE: Use `machinectl` and then `machinectl status <name>` to
+  #   # get the unit "*.scope" of the virtual machine.
+  #   machineUnits = ["machine-qemu\x2d4\x2dwin11.scope"];
+  # };
 
   environment.systemPackages = with pkgs; [
     firefox
