@@ -13,13 +13,14 @@ in {
     enable = mkBoolOpt false "Enable NVIDIA drivers";
     intelBusId = mkOpt str "" "Intel Bus ID";
     nvidiaBusId = mkOpt str "" "NVidia Bus ID";
+    openglExtraPackages = mkOpt (listOf package) [] "Extra openGL packages";
     open-gpu-kernel-modules = mkBoolOpt false "Enable open gpu kernel modules";
   };
 
   config = mkIf cfg.enable {
     hardware.opengl = {
       enable = true;
-      extraPackages = [pkgs.nvidia-vaapi-driver];
+      extraPackages = [pkgs.nvidia-vaapi-driver] ++ cfg.openglExtraPackages;
     };
 
     services.xserver.videoDrivers = ["nvidia"];
