@@ -36,10 +36,6 @@
     neovim.enable = true;
   };
 
-  services = {
-    arrpc.enable = true;
-  };
-
   # NOTE:GUI apps
   apps = {
     kitty.enable = true;

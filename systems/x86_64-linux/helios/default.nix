@@ -24,6 +24,7 @@
   };
 
   services = {
+    arrpc.enable = true;
     ime = {
       enable = true;
       extraModules = [pkgs.fcitx5-mozc]; # Japansese ime
