@@ -11,6 +11,7 @@ with lib.custom; let
 in {
   options.desktop.addons.xdgPortal = with types; {
     enable = mkBoolOpt false "Enable xdg-desktop-portal";
+    extraPortals = mkOpt (listOf package) [] "Extra portals";
   };
 
   config = mkIf cfg.enable {
@@ -19,10 +20,16 @@ in {
       xdgOpenUsePortal = true;
       config = {
         common.default = ["kde"];
+        hyprland = {
+          default = ["hyprland" "gtk"];
+          "org.freedesktop.impl.portal.FileChooser" = ["kde"];
+        };
       };
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-kde
-      ];
+      extraPortals = with pkgs;
+        [
+          xdg-desktop-portal-kde
+        ]
+        ++ cfg.extraPortals;
     };
   };
 }

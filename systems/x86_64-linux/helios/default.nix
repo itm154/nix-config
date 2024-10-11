@@ -21,6 +21,9 @@
       enable = true;
       extraPackages = [pkgs.custom.klassy];
     };
+    hyprland = {
+      enable = true;
+    };
   };
 
   services = {

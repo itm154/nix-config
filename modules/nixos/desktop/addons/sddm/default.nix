@@ -19,15 +19,19 @@ in {
     };
 
     services.displayManager.sddm = {
-      package = pkgs.lib.mkForce pkgs.libsForQt5.sddm;
-      extraPackages = pkgs.lib.mkForce [pkgs.libsForQt5.qt5.qtgraphicaleffects];
       enable = true;
       wayland.enable = true;
-      theme = "rose-pine";
+      # package = pkgs.kdePackages.sddm;
+      theme = "catppuccin-mocha";
+      extraPackages = [pkgs.libsForQt5.sddm-kcm];
     };
 
-    environment.systemPackages = with pkgs.custom; [
-      sddm-rose-pine
+    environment.systemPackages = [
+      (
+        pkgs.catppuccin-sddm.override {
+          flavor = "mocha";
+        }
+      )
     ];
   };
 }

@@ -21,7 +21,7 @@ in {
       enableFishIntegration = cfg.fishIntegration;
       enableBashIntegration = cfg.bashIntegration;
       settings = {
-        palette = "catppuccin-macchiato";
+        palette = "catppuccin-mocha";
 
         palettes = {
           catppuccin-macchiato = {
@@ -35,6 +35,18 @@ in {
             color_purple = "#c6a0f6";
             color_red = "#ed8796";
             color_yellow = "#eed49f";
+          };
+          catppuccin-mocha = {
+            color_fg0 = "#cdd6f4";
+            color_bg1 = "#181825";
+            color_bg3 = "#1e1e2e";
+            color_blue = "#89b4fa";
+            color_aqua = "#89dceb";
+            color_green = "#a6e3a1";
+            color_orange = "#fab387";
+            color_purple = "#b4befe";
+            color_red = "#f38ba8";
+            color_yellow = "#f9e2af";
           };
         };
 
