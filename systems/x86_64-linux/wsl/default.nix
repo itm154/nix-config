@@ -11,6 +11,10 @@
     inputs.nixos-wsl.nixosModules.default
   ];
 
+  cli = {
+    fish.enable = true;
+  };
+
   wsl.enable = true;
   wsl.defaultUser = "itm154";
   nix.settings.experimental-features = ["nix-command" "flakes"];
