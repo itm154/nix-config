@@ -11,28 +11,28 @@ with lib.custom; let
 in {
   options.cli.zoxide = with types; {
     enable = mkBoolOpt false "Enable zoxide";
-    bashIntegration = lib.mkOption {
-      type = lib.types.bool;
+    bashIntegration = mkOption {
+      type = types.bool;
       default = false;
       description = "Enable bash integration";
     };
-    fishIntegration = lib.mkOption {
-      type = lib.types.bool;
+    fishIntegration = mkOption {
+      type = types.bool;
       default = false;
       description = "Enable fish integration";
     };
-    nuShellIntegration = lib.mkOption {
-      type = lib.types.bool;
+    nuShellIntegration = mkOption {
+      type = types.bool;
       default = false;
       description = "Enable nushell integration";
     };
-    zshIntegration = lib.mkOption {
-      type = lib.types.bool;
+    zshIntegration = mkOption {
+      type = types.bool;
       default = false;
       description = "Enable zsh integration";
     };
-    aliasCd = lib.mkOption {
-      type = lib.types.bool;
+    aliasCd = mkOption {
+      type = types.bool;
       default = false;
       description = "Alias cd to zoxide";
     };
