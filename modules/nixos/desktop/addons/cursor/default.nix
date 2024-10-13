@@ -18,7 +18,7 @@ in {
       catppuccin = {
         pointerCursor = {
           enable = true;
-          accent = "maroon";
+          accent = "dark";
         };
       };
     };
