@@ -1,7 +1,7 @@
 # My NixOS config made using [snowfall-lib](https://snowfall.org/guides/lib/quickstart/)
 
-
 ### Directory structure
+
 <details>
 <summary><code>tree | grep -v 'default.nix'</code></summary>
 <pre>
@@ -15,6 +15,7 @@
 │       ├── itm154@vm
 │       └── itm154@wsl
 ├── lib
+│   ├── file
 │   └── module
 ├── modules
 │   ├── home
@@ -35,17 +36,31 @@
 │   │   ├── theme
 │   │   └── user
 │   └── nixos
+│       ├── apps
+│       │   ├── looking-glass-client
+│       │   └── steam
 │       ├── cli
-│       │   └── nixHelper
+│       │   ├── fish
+│       │   ├── fzf
+│       │   ├── gamescope
+│       │   ├── nixHelper
+│       │   └── zsh
 │       ├── desktop
 │       │   ├── addons
+│       │   │   ├── clipboard
 │       │   │   ├── cursor
 │       │   │   ├── gdm
 │       │   │   ├── gtk
+│       │   │   ├── icons
 │       │   │   ├── qt
+│       │   │   ├── rofi
 │       │   │   ├── sddm
+│       │   │   ├── swaync
+│       │   │   ├── waybar
 │       │   │   └── xdgPortal
-│       │   └── plasma
+│       │   ├── hyprland
+│       │   ├── plasma
+│       │   └── sway
 │       ├── hardware
 │       │   ├── audio
 │       │   ├── batteryOptimization
@@ -55,6 +70,7 @@
 │       │   └── nvidia
 │       ├── home
 │       ├── services
+│       │   ├── arrpc
 │       │   ├── ime
 │       │   ├── podman
 │       │   └── powerButton
@@ -64,7 +80,6 @@
 │       │   ├── fonts
 │       │   ├── libinput
 │       │   ├── locales
-│       │   ├── noisetorch
 │       │   ├── secureBoot
 │       │   ├── security
 │       │   │   ├── doas
@@ -76,7 +91,8 @@
 ├── packages
 │   ├── acer-module
 │   ├── acer-wmi-battery
-│   └── sddm-rose-pine
+│   ├── cider
+│   └── klassy
 ├── README.md
 ├── systems
 │   └── x86_64-linux
