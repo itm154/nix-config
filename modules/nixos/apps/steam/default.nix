@@ -11,7 +11,7 @@ with lib.custom; let
 in {
   options.apps.steam = with types; {
     enable = mkBoolOpt false "Enable apps.steam";
-    gamescope = mkBoolOpt true "Enable gamescope";
+    gamescope = mkBoolOpt false "Enable gamescope";
   };
 
   config = mkIf cfg.enable {
