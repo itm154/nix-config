@@ -13,12 +13,14 @@ in {
     enable = mkBoolOpt false "Enable module";
     fishIntegration = mkBoolOpt false "Enable fish integration";
     bashIntegration = mkBoolOpt false "Enable bash integration";
+    zshIntegration = mkBoolOpt false "Enable zsh integration";
   };
 
   config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
       enableFishIntegration = cfg.fishIntegration;
+      enableZshIntegration = cfg.zshIntegration;
       enableBashIntegration = cfg.bashIntegration;
       settings = {
         palette = "catppuccin-mocha";
