@@ -18,7 +18,8 @@
     fish.enable = true;
     starship = {
       enable = true;
-      fishIntegration = true;
+      # fishIntegration = true;
+      zshIntegration = true;
     };
 
     # Some cli stuff
@@ -28,7 +29,8 @@
     cava.enable = true;
     zoxide = {
       enable = true;
-      fishIntegration = true;
+      # fishIntegration = true;
+      zshIntegration = true;
       aliasCd = true;
     };
 
