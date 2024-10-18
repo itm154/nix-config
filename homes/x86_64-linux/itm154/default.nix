@@ -15,7 +15,6 @@
       email = "ashrulfahmi@gmail.com";
     };
 
-    fish.enable = true;
     starship = {
       enable = true;
       # fishIntegration = true;

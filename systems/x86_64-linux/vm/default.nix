@@ -15,6 +15,10 @@
     networking.enable = true;
   };
 
+  cli = {
+    zsh.enable = true;
+  };
+
   system = {
     secureBoot = {
       enable = true;

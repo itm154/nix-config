@@ -18,12 +18,6 @@
       aliasCd = true;
     };
 
-    fish = {
-      enable = true;
-      aliasCommonDir = true;
-      aliasLs = true;
-    };
-
     starship = {
       enable = true;
       fishIntegration = true;

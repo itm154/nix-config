@@ -13,6 +13,7 @@
   };
 
   cli = {
+    # fish.enable = true;
     zsh.enable = true;
     fzf.enable = true;
   };
