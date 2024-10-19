@@ -15,7 +15,8 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      papirus-icon-theme
+      # Apparently catppuccin-papirus-folders already includes all of the icons and adding this just stretches the rebuild time
+      # papirus-icon-theme
       (catppuccin-papirus-folders.override {
         flavor = "mocha";
         accent = "maroon";
