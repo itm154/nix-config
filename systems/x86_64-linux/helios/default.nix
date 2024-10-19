@@ -16,6 +16,7 @@
     # fish.enable = true;
     zsh.enable = true;
     fzf.enable = true;
+    nh.enable = true;
   };
 
   desktop = {

@@ -13,6 +13,7 @@
 
   cli = {
     zsh.enable = true;
+    nh.enable = true;
   };
 
   wsl.enable = true;
