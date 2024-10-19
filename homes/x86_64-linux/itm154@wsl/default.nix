@@ -4,6 +4,8 @@
   ...
 }: {
   cli = {
+    # Git stuff
+    lazygit.enable = true;
     git = {
       useGithubCli = true;
       enable = true;
@@ -12,23 +14,24 @@
       email = "ashrulfahmi@gmail.com";
     };
 
-    zoxide = {
-      enable = true;
-      fishIntegration = true;
-      aliasCd = true;
-    };
-
     starship = {
       enable = true;
-      fishIntegration = true;
+      # fishIntegration = true;
+      zshIntegration = true;
     };
 
-    lazygit.enable = true;
+    # Some cli stuff
     yazi.enable = true;
     btop.enable = true;
     bat.enable = true;
-    cava.enable = true;
+    zoxide = {
+      enable = true;
+      # fishIntegration = true;
+      zshIntegration = true;
+      aliasCd = true;
+    };
 
+    # Main editor
     neovim.enable = true;
   };
 }

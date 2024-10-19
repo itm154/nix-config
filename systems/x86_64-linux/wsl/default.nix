@@ -12,7 +12,7 @@
   ];
 
   cli = {
-    fish.enable = true;
+    zsh.enable = true;
   };
 
   wsl.enable = true;
