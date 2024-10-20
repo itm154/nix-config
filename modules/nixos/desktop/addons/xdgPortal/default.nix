@@ -19,7 +19,10 @@ in {
       enable = true;
       xdgOpenUsePortal = true;
       config = {
-        common.default = ["kde"];
+        common = {
+          default = ["kde"];
+          "org.freedesktop.impl.portal.FileChooser" = ["kde"];
+        };
         hyprland = {
           default = ["hyprland" "gtk"];
           "org.freedesktop.impl.portal.FileChooser" = ["kde"];
