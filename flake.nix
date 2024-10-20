@@ -22,6 +22,9 @@
     # Secure boot module
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
 
+    # TODO: Temporary flake for zen-browser
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
     catppuccin.url = "github:catppuccin/nix";
   };
 

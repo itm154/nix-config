@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -73,6 +74,9 @@
 
   environment.systemPackages = with pkgs; [
     firefox
+
+    # TODO: Temporary, waiting for zen-browser to be packaged properly
+    inputs.zen-browser.packages."${system}".default
   ];
 
   # WARNING: This value determines the NixOS release from which the default
