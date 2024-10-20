@@ -43,12 +43,12 @@ in {
         }
       ];
       shellAliases =
-        lib.mkIf cfg.aliasCommonDir {
+        mkIf cfg.aliasCommonDir {
           rp = "cd ~/Repository/";
           dl = "cd ~/Downloads/";
           docs = "cd ~/Documents/";
         }
-        // lib.mkIf cfg.useEza {
+        // mkIf cfg.useEza {
           ls = "${pkgs.eza}/bin/eza -al --color=always --group-directories-first";
           la = "${pkgs.eza}/bin/eza -a --color=always --group-directories-first";
           ll = "${pkgs.eza}/bin/eza -l --color=always --group-directories-first";
