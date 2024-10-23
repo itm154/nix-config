@@ -30,5 +30,9 @@ in {
       ++ cfg.excludePackages;
 
     environment.systemPackages = with pkgs; [] ++ cfg.extraPackages;
+
+    environment.sessionVariables = {
+      SDL_VIDEODRIVER = "wayland";
+    };
   };
 }
