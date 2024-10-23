@@ -23,10 +23,10 @@
   desktop = {
     plasma = {
       enable = true;
-      extraPackages = [pkgs.custom.klassy];
-    };
-    hyprland = {
-      enable = true;
+      extraPackages = [
+        pkgs.custom.klassy
+        pkgs.bibata-cursors
+      ];
     };
   };
 
