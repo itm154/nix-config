@@ -40,10 +40,7 @@
   };
 
   system = {
-    flatpak = {
-      enable = true;
-      fixIcons = true;
-    };
+    flatpak.enable = true;
     secureBoot = {
       enable = true;
       entries = 5;
