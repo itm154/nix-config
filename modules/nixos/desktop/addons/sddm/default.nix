@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.desktop.addons.sddm;
 in {
   options.desktop.addons.sddm = with types; {
-    enable = mkBoolOpt true "Enable sddm";
+    enable = mkBoolOpt false "Enable sddm";
     background = mkOption {
       type = types.path;
       default = ./background.jpg;

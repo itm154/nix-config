@@ -22,6 +22,8 @@ in {
     services.xserver = mkIf cfg.x11 {enable = true;};
     desktop.addons = {
       xdgPortal.enable = true;
+      sddm.enable = true;
+      icons.enable = true;
     };
     services.desktopManager.plasma6.enable = true;
 

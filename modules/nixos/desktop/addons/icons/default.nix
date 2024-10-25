@@ -10,7 +10,7 @@ with lib.custom; let
   cfg = config.desktop.addons.icons;
 in {
   options.desktop.addons.icons = with types; {
-    enable = mkBoolOpt true "Enable papirus icons";
+    enable = mkBoolOpt false "Enable papirus icons";
   };
 
   config = mkIf cfg.enable {
