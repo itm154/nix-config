@@ -8,6 +8,17 @@ with lib;
 with lib.custom; let
   cfg = config.virtualisation.kvm;
   inherit (config) user;
+
+  # Helper commands for information, attaching and detaching nvidia gpu
+  hows-my-gpu = pkgs.pkgs.writeShellScriptBin "hows-my-gpu" ''
+    echo "NVIDIA Dedicated Graphics" | grep "NVIDIA" && lspci -nnk | grep "NVIDIA Corporation AD107M" -A 2 | grep "Kernel driver in use" && echo "Intel Integrated Graphics" | grep "Intel" && lspci -nnk | grep "Intel.*Integrated Graphics Controller" -A 3 | grep "Kernel driver in use" && echo "Enable and disable the dedicated NVIDIA GPU with nvidia-enable and nvidia-disable"
+  '';
+  nvidia-enable = pkgs.pkgs.writeShellScriptBin "nvidia-enable" ''
+    sudo virsh nodedev-reattach pci_0000_01_00_0 && echo "GPU reattached (now host ready)" && sudo rmmod vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers removed" && sudo modprobe -i nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers added" && echo "COMPLETED!"
+  '';
+  nvidia-disable = pkgs.pkgs.writeShellScriptBin "nvidia-disable" ''
+    sudo rmmod nvidia_modeset nvidia_uvm nvidia && echo "NVIDIA drivers removed" && sudo modprobe -i vfio_pci vfio_pci_core vfio_iommu_type1 && echo "VFIO drivers added" && sudo virsh nodedev-detach pci_0000_01_00_0 && echo "GPU detached (now vfio ready)" && echo "COMPLETED!"
+  '';
 in {
   options.virtualisation.kvm = with types; {
     enable = mkBoolOpt false "Whether or not to enable KVM virtualisation.";
@@ -17,8 +28,7 @@ in {
     platform =
       mkOpt (enum ["amd" "intel"]) "intel"
       "Which CPU platform the machine is using.";
-    # Use `machinectl` and then `machinectl status <name>` to
-    # get the unit "*.scope" of the virtual machine.
+    # Use `machinectl` and then `machinectl status <name>` to get the unit "*.scope" of the virtual machine.
     machineUnits =
       mkOpt (listOf str) []
       "The systemd *.scope units to wait for before starting Scream.";
@@ -52,6 +62,10 @@ in {
 
     environment.systemPackages = with pkgs; [
       libtpms
+      nvidia-enable
+      nvidia-disable
+      hows-my-gpu
+      pciutils
     ];
 
     programs.virt-manager.enable = true;
@@ -68,30 +82,23 @@ in {
 
         qemu = {
           package = pkgs.qemu_kvm;
-          ovmf.enable = true;
-          ovmf.packages = [
-            (pkgs.OVMFFull.override {
-              secureBoot = true; # Win 11 needs secure boot
-              tpmSupport = true; # Win 11 needs TPM
-            })
-            .fd
-          ];
           swtpm.enable = true;
+          runAsRoot = true;
           # verbatimConfig = ''
           #   namespaces = []
-          #   user = "+${toString config.users.users.${user.name}.uid}"
+          #   user = "+${builtins.toString config.users.users.${user.name}.uid}"
           # '';
+          ovmf = {
+            enable = true;
+            packages = [
+              (pkgs.OVMF.override {
+                secureBoot = true;
+                tpmSupport = true;
+              })
+              .fd
+            ];
+          };
         };
-      };
-    };
-
-    environment.etc = {
-      "ovmf/edk2-x86_64-secure-code.fd" = {
-        source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-x86_64-secure-code.fd";
-      };
-
-      "ovmf/edk2-i386-vars.fd" = {
-        source = config.virtualisation.libvirtd.qemu.package + "/share/qemu/edk2-i386-vars.fd";
       };
     };
 
