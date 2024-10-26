@@ -21,17 +21,20 @@ in {
   config = mkIf cfg.enable {
     services.xserver = mkIf cfg.x11 {enable = true;};
     desktop.addons = {
-      xdgPortal.enable = true;
+      xdgPortal = {
+        enable = true;
+        extraPortals = [
+          pkgs.xdg-desktop-portal-gtk
+        ];
+      };
       sddm.enable = true;
       icons.enable = true;
     };
     services.desktopManager.plasma6.enable = true;
 
-    environment.plasma6.excludePackages = with pkgs.kdePackages;
-      []
-      ++ cfg.excludePackages;
+    environment.plasma6.excludePackages = [] ++ cfg.excludePackages;
 
-    environment.systemPackages = with pkgs; [] ++ cfg.extraPackages;
+    environment.systemPackages = [] ++ cfg.extraPackages;
 
     environment.sessionVariables = {
       SDL_VIDEODRIVER = "wayland";
