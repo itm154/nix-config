@@ -12,7 +12,7 @@
   ];
 
   cli = {
-    zsh.enable = true;
+    fish.enable = true;
     nh.enable = true;
   };
 

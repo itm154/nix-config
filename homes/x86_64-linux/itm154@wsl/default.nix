@@ -16,8 +16,7 @@
 
     starship = {
       enable = true;
-      # fishIntegration = true;
-      zshIntegration = true;
+      fishIntegration = true;
     };
 
     # Some cli stuff
@@ -26,8 +25,7 @@
     bat.enable = true;
     zoxide = {
       enable = true;
-      # fishIntegration = true;
-      zshIntegration = true;
+      fishIntegration = true;
       aliasCd = true;
     };
 
