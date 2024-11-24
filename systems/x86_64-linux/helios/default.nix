@@ -14,8 +14,7 @@
   };
 
   cli = {
-    # fish.enable = true;
-    zsh.enable = true;
+    fish.enable = true;
     fzf.enable = true;
     nh.enable = true;
   };
