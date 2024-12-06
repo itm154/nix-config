@@ -11,7 +11,7 @@
 ├── flake.nix
 ├── homes
 │   └── x86_64-linux
-│       ├── itm154
+│       ├── itm154@helios
 │       ├── itm154@vm
 │       └── itm154@wsl
 ├── lib
@@ -25,7 +25,6 @@
 │   │   │   ├── bat
 │   │   │   ├── btop
 │   │   │   ├── cava
-│   │   │   ├── fish
 │   │   │   ├── git
 │   │   │   ├── lazygit
 │   │   │   ├── neovim
@@ -43,7 +42,7 @@
 │       │   ├── fish
 │       │   ├── fzf
 │       │   ├── gamescope
-│       │   ├── nixHelper
+│       │   ├── nh
 │       │   └── zsh
 │       ├── desktop
 │       │   ├── addons
@@ -93,7 +92,6 @@
 │   ├── acer-wmi-battery
 │   ├── cider
 │   └── klassy
-├── README.md
 ├── systems
 │   └── x86_64-linux
 │       ├── helios
