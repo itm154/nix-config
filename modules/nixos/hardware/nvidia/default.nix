@@ -13,13 +13,13 @@ in {
     enable = mkBoolOpt false "Enable NVIDIA drivers";
     intelBusId = mkOpt str "" "Intel Bus ID";
     nvidiaBusId = mkOpt str "" "NVidia Bus ID";
-    openglExtraPackages = mkOpt (listOf package) [] "Extra openGL packages";
+    graphicsExtraPackages = mkOpt (listOf package) [] "Extra openGL packages";
   };
 
   config = mkIf cfg.enable {
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
-      extraPackages = [pkgs.nvidia-vaapi-driver] ++ cfg.openglExtraPackages;
+      extraPackages = [pkgs.nvidia-vaapi-driver] ++ cfg.graphicsExtraPackages;
     };
 
     services.xserver.videoDrivers = ["nvidia"];
@@ -43,6 +43,8 @@ in {
       };
 
       nvidiaSettings = false;
+
+      open = true;
 
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "560.35.03";

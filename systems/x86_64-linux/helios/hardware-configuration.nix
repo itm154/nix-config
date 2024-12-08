@@ -67,7 +67,7 @@ in {
     networking.enable = true;
     nvidia = {
       enable = true;
-      openglExtraPackages = with pkgs; [intel-media-driver];
+      graphicsExtraPackages = with pkgs; [intel-media-driver];
       intelBusId = "PCI:1:0:0";
       nvidiaBusId = "PCI:0:2:0";
     };
