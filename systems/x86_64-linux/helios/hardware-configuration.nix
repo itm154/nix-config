@@ -63,7 +63,7 @@ in {
     audio.enable = true;
     batteryOptimization.enable = true;
     bluetooth.enable = true;
-    drawingTablet.enable = true;
+    drawingTablet.enable = false; # Currently using an EOL version of dotnet
     networking.enable = true;
     nvidia = {
       enable = true;
