@@ -57,6 +57,7 @@ in {
         // {
           # The terminal colorscheme makes it hard to read, this launches alsamixer with its stock colours
           mixer = "alsamixer --no-color";
+          nd = "nix develop";
         };
 
       functions = {
