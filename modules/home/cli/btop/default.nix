@@ -16,11 +16,12 @@ in {
   config = mkIf cfg.enable {
     programs.btop = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         theme_background = false;
         vim_keys = true;
       };
     };
+
+    catppuccin.btop.enable = true;
   };
 }

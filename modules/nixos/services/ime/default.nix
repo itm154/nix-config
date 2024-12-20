@@ -23,7 +23,7 @@ in {
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
 
     home.extraOptions = {
-      i18n.inputMethod.fcitx5.catppuccin.enable = true;
+      catppuccin.fcitx5.enable = true;
     };
 
     environment.sessionVariables = {

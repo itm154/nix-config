@@ -16,7 +16,6 @@ in {
   config = mkIf cfg.enable {
     programs.bat = {
       enable = true;
-      catppuccin.enable = true;
       extraPackages = with pkgs.bat-extras; [
         batdiff
         batman
@@ -24,5 +23,7 @@ in {
         batwatch
       ];
     };
+
+    catppuccin.bat.enable = true;
   };
 }

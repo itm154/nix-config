@@ -16,7 +16,6 @@ in {
   config = mkIf cfg.enable {
     programs.kitty = {
       enable = true;
-      catppuccin.enable = true;
       shellIntegration = {
         enableFishIntegration = true;
         enableBashIntegration = true;
@@ -41,5 +40,7 @@ in {
         "cmd+w" = "close_tab";
       };
     };
+
+    catppuccin.kitty.enable = true;
   };
 }

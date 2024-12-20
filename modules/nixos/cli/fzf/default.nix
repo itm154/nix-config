@@ -22,9 +22,9 @@ in {
       fuzzyCompletion = true;
     };
 
-    home.extraOptions.programs.fzf = {
-      enable = true;
-      catppuccin.enable = true;
+    home.extraOptions = {
+      programs.fzf.enable = true;
+      catppuccin.fzf.enable = true;
     };
   };
 }

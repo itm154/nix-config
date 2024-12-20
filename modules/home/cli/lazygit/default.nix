@@ -16,7 +16,6 @@ in {
   config = mkIf cfg.enable {
     programs.lazygit = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         gui = {
           showIcons = true;
@@ -24,5 +23,7 @@ in {
         };
       };
     };
+
+    catppuccin.lazygit.enable = true;
   };
 }
