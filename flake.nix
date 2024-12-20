@@ -18,6 +18,7 @@
     ## My own flakes ##
     neovim.url = "github:itm154/nixvim";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    solaar.url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
 
     # Secure boot module
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
