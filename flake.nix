@@ -19,10 +19,12 @@
     neovim.url = "github:itm154/nixvim";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     solaar.url = "https://flakehub.com/f/Svenum/Solaar-Flake/*.tar.gz";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Secure boot module
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
 
+    # Colorscheme
     catppuccin.url = "github:catppuccin/nix";
   };
 

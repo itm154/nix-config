@@ -70,8 +70,10 @@
     machineUnits = ["machine-qemu\\x2d1\\x2dwin11.scope"];
   };
 
+  # Core system packages
   environment.systemPackages = with pkgs; [
     firefox
+    inputs.zen-browser."{system}".specific
   ];
 
   # WARNING: This value determines the NixOS release from which the default
