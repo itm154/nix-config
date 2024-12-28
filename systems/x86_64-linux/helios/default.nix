@@ -37,7 +37,8 @@
       extraModules = [pkgs.fcitx5-mozc]; # Japansese ime
     };
     powerButton.enable = true;
-    solaar.enable = true;
+    # solaar.enable = true;
+    piper.enable = true;
   };
 
   system = {
