@@ -73,6 +73,8 @@
   # Core system packages
   environment.systemPackages = with pkgs; [
     firefox
+
+    easyeffects
     inputs.zen-browser.packages."${system}".default
   ];
 
