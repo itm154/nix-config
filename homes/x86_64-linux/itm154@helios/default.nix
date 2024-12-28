@@ -7,6 +7,7 @@
   cli = {
     # Git stuff
     gitui.enable = true;
+    lazygit.enable = true;
     git = {
       useGithubCli = true;
       enable = true;
@@ -41,8 +42,6 @@
   };
 
   home.packages = with pkgs; [
-    custom.cider
-
     prismlauncher
   ];
 }
