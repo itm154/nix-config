@@ -73,7 +73,7 @@
   # Core system packages
   environment.systemPackages = with pkgs; [
     firefox
-    inputs.zen-browser."{system}".specific
+    inputs.zen-browser.packages."${system}".default
   ];
 
   # WARNING: This value determines the NixOS release from which the default
