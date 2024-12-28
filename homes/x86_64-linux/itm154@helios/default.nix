@@ -6,7 +6,7 @@
   # NOTE: CLI programs
   cli = {
     # Git stuff
-    lazygit.enable = true;
+    gitui.enable = true;
     git = {
       useGithubCli = true;
       enable = true;
