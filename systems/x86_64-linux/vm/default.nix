@@ -27,7 +27,8 @@
     fonts = {
       enable = true;
       extraFonts = with pkgs; [
-        (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+        nerd-fonts.fira-code
+        nerd-fonts.jetbrains-mono
       ];
     };
   };

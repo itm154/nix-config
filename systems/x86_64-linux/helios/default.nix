@@ -24,7 +24,6 @@
     plasma = {
       enable = true;
       extraPackages = [
-        pkgs.custom.klassy
         pkgs.bibata-cursors
       ];
     };
@@ -51,7 +50,8 @@
     fonts = {
       enable = true;
       extraFonts = with pkgs; [
-        (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+        nerd-fonts.fira-code
+        nerd-fonts.jetbrains-mono
       ];
     };
   };
