@@ -37,6 +37,7 @@ in {
     environment.systemPackages = [] ++ cfg.extraPackages;
 
     environment.sessionVariables = {
+      KWIN_DRM_USE_MODIFIERS = 0;
       SDL_VIDEODRIVER = "wayland";
     };
   };
