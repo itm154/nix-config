@@ -1,5 +1,4 @@
 {
-  options,
   config,
   lib,
   pkgs,
@@ -8,7 +7,6 @@
 with lib;
 with lib.custom; let
   cfg = config.desktop.sway;
-  term = pkgs.kitty;
   substitutedConfig = pkgs.substituteAll {
     src = ./config;
     term = "kitty";

@@ -1,5 +1,4 @@
 {
-  options,
   config,
   lib,
   pkgs,
@@ -59,19 +58,6 @@ in {
           mixer = "alsamixer --no-color";
           nd = "nix develop";
         };
-
-      functions = {
-        yy = {
-          body = ''
-            set tmp (mktemp -t "yazi-cwd.XXXXXX")
-            yazi $argv --cwd-file="$tmp"
-            if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-              cd -- "$cwd"
-            end
-            rm -f -- "$tmp"
-          '';
-        };
-      };
     };
   };
 }

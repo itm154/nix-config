@@ -1,6 +1,4 @@
 {
-  config,
-  pkgs,
   ...
 }: {
   cli = {
@@ -10,7 +8,6 @@
       useGithubCli = true;
       enable = true;
       username = "itm154";
-
       email = "ashrulfahmi@gmail.com";
     };
 

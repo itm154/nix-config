@@ -1,6 +1,5 @@
 # WARNING: This module will be deprecated because gtk theming sucks, use qt/kde instead
 {
-  options,
   config,
   lib,
   pkgs,

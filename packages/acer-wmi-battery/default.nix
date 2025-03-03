@@ -4,7 +4,6 @@
   fetchFromGitHub,
   pkgs,
   kernel ? pkgs.linuxPackages_zen.kernel,
-  kmod,
 }:
 stdenv.mkDerivation rec {
   name = "acer-wmi-battery-${version}-${kernel.version}";
