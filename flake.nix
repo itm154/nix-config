@@ -23,7 +23,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # Secure boot module
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
 
     # Colorscheme
     catppuccin.url = "github:catppuccin/nix";

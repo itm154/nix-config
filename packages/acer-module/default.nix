@@ -3,7 +3,7 @@
   lib,
   fetchFromGitHub,
   pkgs,
-  kernel ? pkgs.linuxPackages_zen.kernel,
+  kernel ? pkgs.linuxPackages_latest.kernel,
 }:
 stdenv.mkDerivation rec {
   name = " acer-predator-turbo-and-rgb-keyboard-linux-module-${version}-${kernel.modDirVersion}";
@@ -25,6 +25,7 @@ stdenv.mkDerivation rec {
     ++ [
       "-C"
       "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+      "KBUILD_OUTPUT=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
       "M=$(sourceRoot)"
     ];
   buildFlags = ["modules"];

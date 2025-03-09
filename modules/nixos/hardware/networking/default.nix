@@ -29,6 +29,8 @@ in {
         wifi.backend = "iwd";
       };
 
+      wireless.interfaces = ["wlan0"];
+
       firewall = {
         enable = true;
         allowedTCPPorts = cfg.firewall.tcp.allowedPorts;

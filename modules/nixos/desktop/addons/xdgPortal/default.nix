@@ -19,17 +19,12 @@ in {
       xdgOpenUsePortal = true;
       config = {
         common = {
-          default = ["kde" "gtk"];
-          "org.freedesktop.impl.portal.FileChooser" = ["kde"];
-        };
-        hyprland = {
-          default = ["hyprland" "gtk"];
+          default = ["gtk"];
           "org.freedesktop.impl.portal.FileChooser" = ["kde"];
         };
       };
       extraPortals = with pkgs;
         [
-          xdg-desktop-portal-kde
         ]
         ++ cfg.extraPortals;
     };
